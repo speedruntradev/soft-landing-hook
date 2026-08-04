@@ -1915,7 +1915,7 @@
       "path": "submissions/soft-landing/compatibility-report.json",
       "kind": "package:compatibility-report.json",
       "bytes": 18159,
-      "sha256": "709c484a6d826b15ba1b9049a2adfd284254cc4dd19bfb5e6012f65b758ce3d0"
+      "sha256": "6f87ce4536570466f37dee4a6079bd26e743b612ce472c7b746d5544c0602779"
     },
     {
       "path": "submissions/soft-landing/dependency-lock.json",
@@ -5072,5 +5072,5 @@
     }
   ],
   "javascriptImportResolutions": [],
-  "reviewTargetHash": "sha256:649eaeb1654cfdaca926e32dcbee234ded2941c315c566017155e3010563954d"
+  "reviewTargetHash": "sha256:5389f3153d136f5f14e4e924d42ee9eeb6d8c217aa07323e3a8fcbfd46541dc1"
 }
