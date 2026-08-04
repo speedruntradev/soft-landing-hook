@@ -1,7 +1,7 @@
 {
-  "$schema": "urn:programmable:v4-hook-submission:1.5.0",
+  "$schema": "urn:programmable:v4-hook-submission:1.3.0",
   "schemaVersion": 1,
-  "standardVersion": "1.5.0",
+  "standardVersion": "1.3.0",
   "stage": "prototype",
   "model": {
     "id": "soft-landing",
@@ -16,86 +16,6 @@
     "contact": "https://github.com/speedruntradev",
     "beneficiary": null,
     "licenseDeclaration": "MIT for first-party source, tests, simulations, and documents; pinned dependencies retain the licenses recorded in package-lock.json."
-  },
-  "builderTemplate": {
-    "schemaVersion": "1.0.0",
-    "source": "catalog",
-    "templateSelection": {
-      "catalogDigest": "a7875ce817fafd7ca4e0655e2937fa5a49b602283aa846e804732d18e6c1478e",
-      "selectionDigest": "3a0ef2146e48f619ec1d76cf056266e16dfe2252478643ea815e2a3034a0aac2",
-      "starterId": "custom-hook",
-      "requestedPackIds": [
-        "dynamic-lp-fee",
-        "programmable-volume-fee",
-        "test-evidence-threat-model"
-      ],
-      "defaultPackIds": [
-        "custom-hook-behavior",
-        "metadata-disclosures",
-        "programmable-volume-fee",
-        "test-evidence-threat-model"
-      ],
-      "autoIncludedPackIds": [],
-      "selectedPackIds": [
-        "custom-hook-behavior",
-        "dynamic-lp-fee",
-        "metadata-disclosures",
-        "programmable-volume-fee",
-        "test-evidence-threat-model"
-      ],
-      "selectedCapabilityIds": [
-        "canonical-v4-pool",
-        "claimable-platform-fee",
-        "custom-hook-behavior",
-        "dynamic-lp-fee",
-        "evidence-plan",
-        "provider-disclosures",
-        "public-metadata",
-        "quote-side-volume-accounting",
-        "security-properties"
-      ],
-      "customCapabilities": [
-        {
-          "id": "directional-block-congestion-controller",
-          "label": "Directional block congestion controller",
-          "catalogStatus": "unlisted",
-          "automaticDecision": "none",
-          "reviewRoute": "architecture-review-required",
-          "eligibilityEffect": "none"
-        },
-        {
-          "id": "irreversible-launch-expiry",
-          "label": "Irreversible launch expiry",
-          "catalogStatus": "unlisted",
-          "automaticDecision": "none",
-          "reviewRoute": "architecture-review-required",
-          "eligibilityEffect": "none"
-        }
-      ],
-      "ownerProvidedLocalTags": [
-        "launch-congestion",
-        "soft-landing"
-      ],
-      "localProjectTags": [
-        "canonical-v4-pool",
-        "claimable-platform-fee",
-        "custom-hook",
-        "custom-hook-behavior",
-        "directional-block-congestion-controller",
-        "dynamic-lp-fee",
-        "evidence-plan",
-        "irreversible-launch-expiry",
-        "launch-congestion",
-        "metadata-disclosures",
-        "programmable-volume-fee",
-        "provider-disclosures",
-        "public-metadata",
-        "quote-side-volume-accounting",
-        "security-properties",
-        "soft-landing",
-        "test-evidence-threat-model"
-      ]
-    }
   },
   "publicMetadata": {
     "project": {
@@ -117,10 +37,6 @@
       "metadataMutable": false,
       "metadataOwner": null
     },
-    "localDiscoveryTags": [
-      "launch-congestion",
-      "soft-landing"
-    ],
     "claimedAffiliations": [
       {
         "organization": "Uniswap v4",
@@ -283,7 +199,7 @@
   },
   "programmableFee": {
     "policyId": "programmable-volume-fee-v1",
-    "policyVersion": "1.1.0",
+    "policyVersion": "1.0.0",
     "poolScope": "canonical-launch-pool-key",
     "rates": {
       "unit": "hundredths-of-bip",
@@ -337,11 +253,6 @@
         "owner"
       ],
       "crossPoolNetting": false,
-      "roundingPolicy": "cumulative-independent-platform-project-remainders",
-      "remainderScope": "canonical-pool-lifetime",
-      "claimResetsRemainders": false,
-      "minimumGrossQuoteUnits": 1000,
-      "fragmentationResistant": true,
       "valueFlowId": "programmable-volume-fee",
       "collectionEvent": "QuoteFeesAccrued(bytes32 indexed poolId,address indexed quoteCurrency,address indexed swapSender,bool isBuy,uint256 grossQuoteAmount,uint256 programmableFee,uint256 programmableRemainder)",
       "claimEvent": "ProgrammableFeesClaimed(bytes32 indexed poolId,address indexed quoteCurrency,address indexed owner,address recipient,uint256 amount)"
@@ -826,7 +737,6 @@
     }
   },
   "noHookArchitecture": null,
-  "tokenMechanics": null,
   "valueFlows": [
     {
       "id": "core-swap",
@@ -980,16 +890,6 @@
       "settlementMode": null,
       "permit2Mode": null,
       "finalSwapDeltaValidated": null
-    },
-    "sdkSafetyProfile": {
-      "packageRootImportsOnly": null,
-      "hookedQuoteSource": null,
-      "localHookedPoolMathDisabled": null,
-      "hookDataParity": null,
-      "multiHopHookDataMode": null,
-      "perHopPriceBounds": null,
-      "slippageSemantics": null,
-      "deprecatedLiquidityActionsDisabled": null
     },
     "appSourcePaths": [],
     "integrationTestPaths": [],

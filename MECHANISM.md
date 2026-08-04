@@ -106,7 +106,7 @@ The mandatory Programmable quote-volume fee continues after controller expiry.
 
 ## Programmable fee
 
-The project-selected hook-owned charge is zero. Under `programmable-volume-fee-v1@1.1.0`:
+The project-selected hook-owned charge is zero. Under `programmable-volume-fee-v1@1.0.0`:
 
 ```text
 selected total = 0

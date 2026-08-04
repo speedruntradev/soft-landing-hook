@@ -49,7 +49,7 @@ const gateEvidence = (gateId) => ({
   sha256: `sha256:${crypto.createHash("sha256").update(evidenceBytes).digest("hex")}`,
   command:
     "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
-  toolVersion: "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
+  toolVersion: "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
   commit: originCommit,
   reviewTargetHash: reviewTarget.reviewTargetHash,
 });

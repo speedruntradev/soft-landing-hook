@@ -5,6 +5,19 @@ import fs from "node:fs";
 const path = new URL("../submissions/soft-landing/submission.json", import.meta.url);
 const submission = JSON.parse(fs.readFileSync(path, "utf8"));
 
+submission.$schema = "urn:programmable:v4-hook-submission:1.3.0";
+submission.standardVersion = "1.3.0";
+delete submission.builderTemplate;
+delete submission.publicMetadata.localDiscoveryTags;
+delete submission.integration.sdkSafetyProfile;
+delete submission.tokenMechanics;
+submission.programmableFee.policyVersion = "1.0.0";
+delete submission.programmableFee.accounting.roundingPolicy;
+delete submission.programmableFee.accounting.remainderScope;
+delete submission.programmableFee.accounting.claimResetsRemainders;
+delete submission.programmableFee.accounting.minimumGrossQuoteUnits;
+delete submission.programmableFee.accounting.fragmentationResistant;
+
 const SOURCE_PATHS = [
   "src/SoftLandingHook.sol",
   "src/SoftLandingHookFactory.sol",
@@ -955,7 +968,6 @@ submission.disclosures = [
   "The canonical application uses native ETH as currency0 quote and a standard fixed-supply launched token as currency1; the implementation tests both quote orderings.",
   "No wallet identity, tx.origin, holding time, allowlist, denylist, oracle, keeper, pause, upgrade, rescue, creator claim, project fee, or mutable fee setter exists.",
 ];
-submission.tokenMechanics = null;
 submission.noHookArchitecture = null;
 submission.tokenBehaviorExtensions = [];
 submission.unresolved = [];

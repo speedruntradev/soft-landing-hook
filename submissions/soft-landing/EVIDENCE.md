@@ -20,7 +20,7 @@ Exact source and tests are `src/SoftLandingHook.sol`, `src/SoftLandingHookFactor
 
 ## Mandatory fee evidence
 
-Policy: `programmable-volume-fee-v1@1.1.0`. Canonical basis: executed gross quote-side volume. Selected project fee: zero. Effective split: 10 bps Programmable, zero project. Owner and sole claim authority: `0x4957f49620AFf3Adbbe8195a4f633E49cc93376c`. Accrual mode: claimable liability. Claim availability: anytime to a nonzero owner-selected per-claim destination.
+Policy: `programmable-volume-fee-v1@1.0.0`. Canonical basis: executed gross quote-side volume. Selected project fee: zero. Effective split: 10 bps Programmable, zero project. Owner and sole claim authority: `0x4957f49620AFf3Adbbe8195a4f633E49cc93376c`. Accrual mode: claimable liability. Claim availability: anytime to a nonzero owner-selected per-claim destination.
 
 `testAllNativeQuoteQuadrantsAccrueExecutedGrossQuote` and `testErc20QuoteCurrencyOneCoversAllFourQuadrants` cover buy/sell × exact-input/exact-output and both quote positions. `testSpecifiedQuotePartialFillRevertsAtomically` covers fail-closed precollection. `testCumulativeRemainderResistsFragmentation`, `testDustAndExactOutputRounding`, and both fee fuzz tests cover rounding and the 1,000-unit minimum. `testProgrammableOwnerOnlyClaimToPerClaimDestination` reconciles liability and PoolManager claims through authorization and redemption. `testCanonicalPoolAndCallbackAuthentication` establishes the one-pool/no-cross-pool boundary. The hook exposes no same-pool swap function.
 
