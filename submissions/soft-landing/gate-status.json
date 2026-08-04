@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "attestation": "builder-declared-untrusted",
+  "standardVersion": "1.5.0",
+  "submissionHash": "sha256:aa4c4893bb2acc9ed7a6d03ddf5383225e70ed830d588cbb04f602899b3e5422",
+  "validatorSha256": "sha256:2b9befc32be4b3a8267c9c9c4fe8cb36dcc53aef518f7c8216c0edda06732d61",
+  "schemaSha256": "sha256:67e839128136fbffa8d9d6551a75c1988e55a3a74a0827359826e1449201cc45",
+  "deploymentSnapshotSha256": "sha256:35e36a2837a70688104cd6a4aae3da4e1401429226c8ca15d036db4cf2195d2c",
+  "officialDeploymentReferenceSha256": "sha256:ef7e12bf1312edf374749bfeb18ac41cb83623856fbfd39892606579b7119fd6",
+  "policyBundleSha256": "sha256:30db39a2059cbb3755eb9f04eb0ea8e2e0256e0243045f1e37a955dbb173443f",
+  "reviewTargetHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "gates": [
+    {
+      "id": "independent-security-review-one",
+      "status": "planned",
+      "evidence": [],
+      "note": "Repository tests and builder checks do not replace an independent review of the return-delta accounting and controller economics."
+    }
+  ]
+}

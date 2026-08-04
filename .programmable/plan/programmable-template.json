@@ -1,0 +1,397 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "programmable-project-template",
+  "catalogDigest": "a7875ce817fafd7ca4e0655e2937fa5a49b602283aa846e804732d18e6c1478e",
+  "selectionDigest": "3a0ef2146e48f619ec1d76cf056266e16dfe2252478643ea815e2a3034a0aac2",
+  "policy": {
+    "selectionSemantics": "accelerator-only",
+    "eligibilityEffect": "none",
+    "unknownCapabilityOutcome": "architecture-review-required",
+    "missingCatalogLabelOutcome": "preserve-custom-capability",
+    "automaticAdverseDecision": false
+  },
+  "selection": {
+    "starterId": "custom-hook",
+    "requestedPackIds": [
+      "dynamic-lp-fee",
+      "programmable-volume-fee",
+      "test-evidence-threat-model"
+    ],
+    "defaultPackIds": [
+      "custom-hook-behavior",
+      "metadata-disclosures",
+      "programmable-volume-fee",
+      "test-evidence-threat-model"
+    ],
+    "autoIncludedPackIds": [],
+    "selectedPackIds": [
+      "custom-hook-behavior",
+      "dynamic-lp-fee",
+      "metadata-disclosures",
+      "programmable-volume-fee",
+      "test-evidence-threat-model"
+    ]
+  },
+  "starter": {
+    "schemaVersion": "1.0.0",
+    "kind": "starter",
+    "id": "custom-hook",
+    "label": "Custom Uniswap v4 hook",
+    "summary": "Start a canonical v4 pool whose custom hook owns the required pool behavior and fee integration.",
+    "acceleratorOnly": true,
+    "eligibilityEffect": "none",
+    "unknownCapabilityPolicy": "preserve-and-route",
+    "reviewRoute": "custom-review",
+    "defaultPacks": [
+      "custom-hook-behavior",
+      "metadata-disclosures",
+      "programmable-volume-fee",
+      "test-evidence-threat-model"
+    ],
+    "conflictsWith": [],
+    "capabilities": [
+      "canonical-v4-pool",
+      "custom-hook-behavior"
+    ],
+    "projectSurfaces": [
+      "contract",
+      "indexer",
+      "metadata"
+    ],
+    "requiredFacts": [
+      "Why each enabled callback is necessary",
+      "The exact PoolKey, permission mask and hook address derivation",
+      "All currency flows, settlement rules, authorities and exits",
+      "How custom behavior composes with the mandatory Programmable fee"
+    ],
+    "requiredFiles": [
+      "Hook and launcher source",
+      "Pinned dependency and compiler configuration",
+      "Architecture proposal",
+      "Threat model",
+      "Test plan",
+      "Evidence index"
+    ],
+    "requiredTests": [
+      "PoolManager authentication and PoolKey admission",
+      "Permission-mask and hook-address checks",
+      "Value-conservation fuzzing and stateful invariants",
+      "Complete lifecycle and failure recovery"
+    ],
+    "risks": [
+      "Callback or accounting mistakes can affect every swap",
+      "Custom routing or hookData can narrow provider support"
+    ],
+    "definitionSha256": "755f095582c6b9c2f8c8c8c2cef0913b07c589a96e94fe2267b2173e488701ca"
+  },
+  "packs": [
+    {
+      "schemaVersion": "1.0.0",
+      "kind": "pack",
+      "id": "custom-hook-behavior",
+      "label": "Custom hook behavior",
+      "summary": "Document and test custom PoolManager callbacks without assuming any specific product category.",
+      "acceleratorOnly": true,
+      "eligibilityEffect": "none",
+      "unknownCapabilityPolicy": "preserve-and-route",
+      "reviewRoute": "custom-review",
+      "requires": [
+        "programmable-volume-fee"
+      ],
+      "conflictsWith": [],
+      "capabilities": [
+        "custom-hook-behavior"
+      ],
+      "projectSurfaces": [
+        "contract",
+        "indexer"
+      ],
+      "requiredFacts": [
+        "Every enabled callback and why it is necessary",
+        "Canonical PoolManager authentication and PoolKey admission",
+        "Permission bits, HookMiner preimage and deployment address",
+        "All returned deltas, settlement steps and callback failure effects"
+      ],
+      "requiredFiles": [
+        "Hook source",
+        "Hook address and permission evidence",
+        "Callback and accounting design",
+        "Integration tests"
+      ],
+      "requiredTests": [
+        "Direct non-PoolManager callback rejection",
+        "Permission mask and deployed address bits",
+        "Value conservation and settlement ordering",
+        "Unexpected PoolKey, malformed hookData and reentrancy paths"
+      ],
+      "risks": [
+        "The callback sender is not the end user",
+        "Returned deltas create hook liabilities and require explicit conservation",
+        "Every unnecessary permission expands the attack surface"
+      ],
+      "definitionSha256": "202848994958e3487badfa447199ad7de4691432b0ba750e243dbe2eaddb283c"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "kind": "pack",
+      "id": "dynamic-lp-fee",
+      "label": "Dynamic LP fee",
+      "summary": "Vary the pool LP fee from bounded, attributable inputs without confusing it with hook-owned fees.",
+      "acceleratorOnly": true,
+      "eligibilityEffect": "none",
+      "unknownCapabilityPolicy": "preserve-and-route",
+      "reviewRoute": "custom-review",
+      "requires": [
+        "custom-hook-behavior"
+      ],
+      "conflictsWith": [],
+      "capabilities": [
+        "dynamic-lp-fee"
+      ],
+      "projectSurfaces": [
+        "contract",
+        "indexer"
+      ],
+      "requiredFacts": [
+        "Minimum, maximum, update actor and update cadence",
+        "Input metric, observation window, manipulation resistance and failure rule",
+        "Whether the fee is returned per swap or persisted in PoolManager state",
+        "Clear separation from the mandatory Programmable and project hook-owned fees"
+      ],
+      "requiredFiles": [
+        "Dynamic fee policy",
+        "Hook implementation",
+        "Oracle or measurement dependency evidence",
+        "Fee behavior tests"
+      ],
+      "requiredTests": [
+        "Minimum, maximum and rate-limit boundaries",
+        "Manipulated, stale, unavailable and extreme inputs",
+        "Quote-to-execution parity",
+        "Liquidity decrease and failure behavior"
+      ],
+      "risks": [
+        "A manipulable input can create predatory pricing",
+        "Provider quotes can diverge from dynamic execution"
+      ],
+      "definitionSha256": "425bc1273b3e7a25ba76a63978ad70298210590e8f3964768807a9e45cb5e0ea"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "kind": "pack",
+      "id": "metadata-disclosures",
+      "label": "Metadata, tags and disclosures",
+      "summary": "Bind public names, media, economics, affiliations and provider-specific evidence without hidden tags.",
+      "acceleratorOnly": true,
+      "eligibilityEffect": "none",
+      "unknownCapabilityPolicy": "preserve-and-route",
+      "reviewRoute": "standard-review",
+      "requires": [],
+      "conflictsWith": [],
+      "capabilities": [
+        "provider-disclosures",
+        "public-metadata"
+      ],
+      "projectSurfaces": [
+        "application",
+        "indexer",
+        "metadata"
+      ],
+      "requiredFacts": [
+        "Project and token names, symbol, description, URIs and exact logo bytes or hash",
+        "Metadata owners, mutability, update authority and history",
+        "All fees, restrictions, external dependencies and affiliations in public language",
+        "Provider tags and support as separate time-bounded evidence states"
+      ],
+      "requiredFiles": [
+        "Canonical metadata record",
+        "Logo and media provenance",
+        "Public disclosure card",
+        "Provider evidence index"
+      ],
+      "requiredTests": [
+        "NFC, confusable, bidirectional, invisible and control-character checks",
+        "URI, media-byte, content-type and hash binding",
+        "Fee and restriction parity across public surfaces",
+        "Unknown, stale, unsupported and confirmed provider states"
+      ],
+      "risks": [
+        "Invisible or confusable text can hide identity or economics",
+        "Provider tags can become stale or imply support that does not exist",
+        "Mutable media can change after review"
+      ],
+      "definitionSha256": "a3e5fdb9cd89acda473906b534c799e51ebfd9540135e4ece1af6130147830cc"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "kind": "pack",
+      "id": "programmable-volume-fee",
+      "label": "Mandatory Programmable volume fee",
+      "summary": "Specify the non-additive 0.1 percent Programmable share on executed canonical-pool volume.",
+      "acceleratorOnly": true,
+      "eligibilityEffect": "none",
+      "unknownCapabilityPolicy": "preserve-and-route",
+      "reviewRoute": "custom-review",
+      "requires": [],
+      "conflictsWith": [],
+      "capabilities": [
+        "claimable-platform-fee",
+        "quote-side-volume-accounting"
+      ],
+      "projectSurfaces": [
+        "contract",
+        "indexer",
+        "metadata"
+      ],
+      "requiredFacts": [
+        "The effective total is the greater of the selected fee and 10 basis points",
+        "Exactly 10 basis points belongs to 0x4957f49620AFf3Adbbe8195a4f633E49cc93376c and the remainder belongs to the project",
+        "The executed gross quote-side basis for all four swap quadrants",
+        "Rounding, dust, partial-fill and same-hook PoolManager-call behavior",
+        "Pool-scoped liabilities and owner-only claims to a selected per-claim destination"
+      ],
+      "requiredFiles": [
+        "Fee-enforcing hook source",
+        "Fee policy and worked examples",
+        "Fee accounting tests",
+        "Claim and reconstruction evidence"
+      ],
+      "requiredTests": [
+        "Ten-basis-point floor and non-additive split",
+        "All four swap quadrants and both swap directions",
+        "Rounding, dust, partial fills and self-call policy",
+        "Immutable owner-only claims and arbitrary safe per-claim destination",
+        "No bypass, cross-pool netting or liability leakage"
+      ],
+      "risks": [
+        "Incorrect gross-volume basis can overcharge or undercharge",
+        "Rounding and partial fills can break exact conservation",
+        "Mutable or shared claim authority can redirect accrued fees"
+      ],
+      "definitionSha256": "76eb4fbe05649bad1e168450fec1030dfca807c6810b697381f133fd16423e04"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "kind": "pack",
+      "id": "test-evidence-threat-model",
+      "label": "Tests, evidence and threat model",
+      "summary": "Create project-specific security properties, test obligations and attributable evidence from the start.",
+      "acceleratorOnly": true,
+      "eligibilityEffect": "none",
+      "unknownCapabilityPolicy": "preserve-and-route",
+      "reviewRoute": "standard-review",
+      "requires": [],
+      "conflictsWith": [],
+      "capabilities": [
+        "evidence-plan",
+        "security-properties"
+      ],
+      "projectSurfaces": [
+        "application",
+        "contract",
+        "game",
+        "indexer",
+        "service"
+      ],
+      "requiredFacts": [
+        "Assets, actors, authorities, trust boundaries and attacker goals",
+        "Safety, solvency, conservation, liveness and user-exit properties",
+        "Exact commands, tool versions, fixtures, seeds, results and skipped checks",
+        "Which claims need maintainer, deployment, provider or onchain evidence"
+      ],
+      "requiredFiles": [
+        "Architecture proposal",
+        "Threat model",
+        "Test plan",
+        "Evidence index",
+        "Pinned build and dependency configuration"
+      ],
+      "requiredTests": [
+        "Unit, integration, fuzz and invariant checks appropriate to the project",
+        "Every authority, boundary, failure and recovery path",
+        "Adversarial dependencies and malformed inputs",
+        "Reproducible clean-environment build and test"
+      ],
+      "risks": [
+        "Template text is not project-specific evidence",
+        "Skipped or unavailable checks cannot be reported as passing",
+        "Local tests do not prove audit, deployment, indexing or availability"
+      ],
+      "definitionSha256": "9adfe6dc1bb0694febc2867eb85f722cbe495100efb9fece847f7ea9371c3f44"
+    }
+  ],
+  "customCapabilities": [
+    {
+      "id": "directional-block-congestion-controller",
+      "label": "Directional block congestion controller",
+      "catalogStatus": "unlisted",
+      "automaticDecision": "none",
+      "reviewRoute": "architecture-review-required",
+      "eligibilityEffect": "none",
+      "requiredFacts": [
+        "Actors and assets",
+        "Authority and trust boundary",
+        "Value flow and conservation",
+        "Failure, recovery and user exit",
+        "Source, tests and attributable evidence"
+      ]
+    },
+    {
+      "id": "irreversible-launch-expiry",
+      "label": "Irreversible launch expiry",
+      "catalogStatus": "unlisted",
+      "automaticDecision": "none",
+      "reviewRoute": "architecture-review-required",
+      "eligibilityEffect": "none",
+      "requiredFacts": [
+        "Actors and assets",
+        "Authority and trust boundary",
+        "Value flow and conservation",
+        "Failure, recovery and user exit",
+        "Source, tests and attributable evidence"
+      ]
+    }
+  ],
+  "machineCapabilities": {
+    "semantics": "internal-planning-and-review-only",
+    "knownCapabilityIds": [
+      "canonical-v4-pool",
+      "claimable-platform-fee",
+      "custom-hook-behavior",
+      "dynamic-lp-fee",
+      "evidence-plan",
+      "provider-disclosures",
+      "public-metadata",
+      "quote-side-volume-accounting",
+      "security-properties"
+    ],
+    "ownerDefinedCapabilityIds": [
+      "directional-block-congestion-controller",
+      "irreversible-launch-expiry"
+    ],
+    "allCapabilityIds": [
+      "canonical-v4-pool",
+      "claimable-platform-fee",
+      "custom-hook-behavior",
+      "directional-block-congestion-controller",
+      "dynamic-lp-fee",
+      "evidence-plan",
+      "irreversible-launch-expiry",
+      "provider-disclosures",
+      "public-metadata",
+      "quote-side-volume-accounting",
+      "security-properties"
+    ],
+    "publicDiscoveryTagInference": "forbidden"
+  },
+  "tagSuggestions": {
+    "semantics": "owner-provided-local-discovery-only",
+    "catalogMembershipRequired": false,
+    "ownerProvidedLocalTags": [
+      "launch-congestion",
+      "soft-landing"
+    ],
+    "machineCapabilityInference": "forbidden",
+    "providerSupportInference": "forbidden"
+  }
+}
