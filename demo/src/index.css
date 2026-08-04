@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "tailwindcss-react-aria-components";
+
+:root {
+  color-scheme: dark;
+  --bg: #070a0d;
+  --fg: #f2f6f5;
+  --card: #0d1217;
+  --card-fg: #f2f6f5;
+  --muted: #151c22;
+  --muted-fg: #8a969f;
+  --soft-fg: #5c6972;
+  --border: rgba(169, 189, 202, 0.13);
+  --line: rgba(169, 189, 202, 0.12);
+  --line-strong: rgba(169, 189, 202, 0.25);
+  --input: rgba(169, 189, 202, 0.2);
+  --ring: #7fffb2;
+  --primary: #7fffb2;
+  --primary-fg: #06120b;
+  --primary-subtle: rgba(127, 255, 178, 0.12);
+  --primary-subtle-fg: #9dffc5;
+  --secondary: #161d23;
+  --secondary-fg: #e2e9e7;
+  --success: #7fffb2;
+  --success-fg: #06120b;
+  --success-subtle: rgba(127, 255, 178, 0.12);
+  --success-subtle-fg: #9dffc5;
+  --warning: #f4a261;
+  --warning-fg: #1d0e03;
+  --warning-subtle: rgba(244, 162, 97, 0.12);
+  --warning-subtle-fg: #ffc18d;
+  --danger: #ff6467;
+  --danger-fg: #fff;
+  --danger-subtle: rgba(255, 100, 103, 0.12);
+  --danger-subtle-fg: #ff9b9d;
+  --info-subtle: rgba(97, 168, 255, 0.12);
+  --info-subtle-fg: #91c4ff;
+  --lime: #7fffb2;
+  --lime-soft: rgba(127, 255, 178, 0.075);
+  --amber: #f4a261;
+  --amber-soft: rgba(244, 162, 97, 0.1);
+  --blue: #579dff;
+  --grid-line: rgba(166, 190, 203, 0.06);
+  --radius: 0.65rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@theme inline {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-card: var(--card);
+  --color-card-fg: var(--card-fg);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-subtle-fg: var(--primary-subtle-fg);
+  --color-secondary: var(--secondary);
+  --color-secondary-fg: var(--secondary-fg);
+  --color-muted: var(--muted);
+  --color-muted-fg: var(--muted-fg);
+  --color-success: var(--success);
+  --color-success-fg: var(--success-fg);
+  --color-success-subtle: var(--success-subtle);
+  --color-success-subtle-fg: var(--success-subtle-fg);
+  --color-warning: var(--warning);
+  --color-warning-fg: var(--warning-fg);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-subtle-fg: var(--warning-subtle-fg);
+  --color-danger: var(--danger);
+  --color-danger-fg: var(--danger-fg);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-danger-subtle-fg: var(--danger-subtle-fg);
+  --color-info-subtle: var(--info-subtle);
+  --color-info-subtle-fg: var(--info-subtle-fg);
+  --radius-sm: calc(var(--radius) * 0.65);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.35);
+}
+
+@layer base {
+  * { box-sizing: border-box; border-color: var(--border); }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body { min-width: 320px; min-height: 100svh; margin: 0; background: radial-gradient(circle at 50% -20%, #142018 0, var(--bg) 37%); }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  button { font-family: inherit; }
+  ::selection { background: rgba(127, 255, 178, 0.25); color: #fff; }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-thumb { border-radius: 999px; background: var(--line-strong); }
+}
+
+@utility touch-target {
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    width: 100%;
+    min-width: 44px;
+    height: 100%;
+    min-height: 44px;
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+}

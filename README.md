@@ -29,6 +29,20 @@ npm run simulate
 Read [MECHANISM.md](MECHANISM.md), [SECURITY.md](SECURITY.md), and [EVIDENCE.md](EVIDENCE.md) before evaluating or
 deploying the contracts.
 
+## Interactive mechanism lab
+
+The [`demo/`](demo/) MVP visualizes current-block flow, next-block directional fees, empty-block decay, expiry, and
+the separate Programmable fee. It is a local simulator, not a deployment or trading interface.
+
+```bash
+cd demo
+bun install
+bun run dev
+```
+
+The frontend uses Vite 8, React, Intent UI components, Zustand, viem, and wagmi. Run `bun run test`, `bun run lint`,
+and `bun run build` before publishing it.
+
 ## Important limits
 
 - The adaptive component has a one-block lag. The immutable initial fee, not adaptive feedback, covers the first
