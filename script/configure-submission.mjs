@@ -26,6 +26,7 @@ const ALL_SWAP_MODES = [
 ];
 
 submission.stage = "prototype";
+submission.target.dependencyBaseline = "model-specific-pinned";
 submission.model = {
   id: "soft-landing",
   name: "Soft Landing",
@@ -700,15 +701,15 @@ submission.dependencies = {
       name: "Uniswap v4 PoolManager",
       kind: "protocol-singleton",
       repository: "https://github.com/Uniswap/v4-core",
-      revision: "59d3ecf53afa9264a16bba0e38f4c5d2231f80bc",
-      packageVersion: "1.0.2",
+      revision: "af7c077a438d5556b75f0ca722c6d3d53a7a1a9b",
+      packageVersion: "1.0.0",
       license: "BUSL-1.1/MIT mixed by file",
       sourceProvenance: "pinned-source",
       deploymentRecordId: "v4-poolmanager-ethereum",
       chainAddress: "0x000000000004444c5dc75cB358380D2e3dE08A90",
       runtimeHash: "0x785f1014552b7ce7d5fb7d0c970ca60edee94fd00425d7ca21609acac7ce1293",
       deploymentEvidencePath: "submissions/soft-landing/deployment-evidence.json",
-      trust: "The prototype compiles and tests against the exact npm package; no mainnet runtime claim is made.",
+      trust: "The address is from Uniswap's pinned deployment feed; runtime was observed over a public RPC and Sourcify match 6376919 binds the deployed source to the npm 1.0.0 gitHead.",
       failure: "A missing, wrong, or reverting PoolManager blocks deployment or reverts the action.",
       fallback: "No fallback PoolManager; deployment evidence must bind the intended Ethereum record later.",
     },
@@ -939,7 +940,7 @@ submission.implementation = {
   compilerBuildInfoPaths: buildInfoFiles,
   specificationPath: "MECHANISM.md",
   testEvidencePath: "EVIDENCE.md",
-  dependencyLockPath: "package-lock.json",
+  dependencyLockPath: "submissions/soft-landing/dependency-lock.json",
   gateStatusPath: "submissions/soft-landing/gate-status.json",
   reviewTargetPath: "submissions/soft-landing/review-target.json",
   runtimeAssetManifestPath: null,

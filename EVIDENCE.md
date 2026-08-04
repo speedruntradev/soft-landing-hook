@@ -42,6 +42,11 @@ node simulations/launch-traces.mjs
 
 ## Known incomplete evidence
 
+- Build-info normalization: Foundry 1.7.1 records only `0.8.26` in `solcLongVersion` when `--use` receives a local
+  compiler path. `script/normalize-build-info.mjs` queries the executed binary's `--version`, requires the matching
+  short version, and fills the canonical `0.8.26+commit.8a97fa7a` envelope field without changing compiler input or
+  output.
+
 - Forge lint: run locally; truncating casts use checked `SafeCast`; remaining diagnostics are non-security style notes
 - Slither: unavailable in the local toolchain; pending isolated CI or reviewer run
 - Mainnet fork: pending

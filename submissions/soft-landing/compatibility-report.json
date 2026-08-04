@@ -1,7 +1,7 @@
 {
   "reportVersion": 3,
   "standardVersion": "1.5.0",
-  "submissionHash": "sha256:afcc683b411c8c0313777125a376a46fb8ece73210f19180d22f56b8492bc77e",
+  "submissionHash": "sha256:215e0e20cd73b560844cddaa2be1b186e137ffd5511b6931e2d0f21218b05c4a",
   "toolchain": {
     "validatorSha256": "sha256:2b9befc32be4b3a8267c9c9c4fe8cb36dcc53aef518f7c8216c0edda06732d61",
     "schemaSha256": "sha256:67e839128136fbffa8d9d6551a75c1988e55a3a74a0827359826e1449201cc45",
@@ -166,6 +166,16 @@
       "id": "independent-specialist-review",
       "stage": "candidate",
       "reason": "beforeSwapReturnDelta is enabled."
+    },
+    {
+      "id": "model-specific-architecture-review",
+      "stage": "candidate",
+      "reason": "A model-specific baseline changes the architecture and trust assumptions outside the Programmable-tested acceleration path."
+    },
+    {
+      "id": "model-specific-dependency-review",
+      "stage": "candidate",
+      "reason": "A builder-pinned compiler and dependency closure remains unreviewed until maintainers verify the exact lock and source graph."
     },
     {
       "id": "novel-capability-architecture-review",
@@ -379,6 +389,7 @@
     "designBlockerCodes": [],
     "implementationBlockerCodes": [],
     "architectureReviewGateIds": [
+      "model-specific-architecture-review",
       "novel-capability-architecture-review",
       "novel-project-capability-architecture-review"
     ]

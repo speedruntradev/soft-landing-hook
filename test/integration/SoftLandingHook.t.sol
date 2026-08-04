@@ -58,8 +58,7 @@ contract SoftLandingHookTest is Deployers {
         });
 
         hookFactory = new SoftLandingHookFactory();
-        projectToken = new MockToken("Soft Landing Project", "SLP");
-        projectToken.mint(address(this), 1_000_000 ether);
+        projectToken = new MockToken("Soft Landing Project", "SLP", 1_000_000 ether);
         projectToken.approve(address(modifyLiquidityRouter), type(uint256).max);
         projectToken.approve(address(swapRouter), type(uint256).max);
 
@@ -173,12 +172,10 @@ contract SoftLandingHookTest is Deployers {
     }
 
     function testErc20QuoteCurrencyOneCoversAllFourQuadrants() public {
-        MockToken tokenA = new MockToken("Token A", "A");
-        MockToken tokenB = new MockToken("Token B", "B");
+        MockToken tokenA = new MockToken("Token A", "A", 100_000 ether);
+        MockToken tokenB = new MockToken("Token B", "B", 100_000 ether);
         MockToken lower = address(tokenA) < address(tokenB) ? tokenA : tokenB;
         MockToken quote = address(tokenA) < address(tokenB) ? tokenB : tokenA;
-        lower.mint(address(this), 100_000 ether);
-        quote.mint(address(this), 100_000 ether);
         lower.approve(address(modifyLiquidityRouter), type(uint256).max);
         quote.approve(address(modifyLiquidityRouter), type(uint256).max);
         lower.approve(address(swapRouter), type(uint256).max);
@@ -391,8 +388,6 @@ contract SoftLandingHookTest is Deployers {
 
     function _leadingSelector(bytes memory data) private pure returns (bytes4 selector) {
         require(data.length >= 4, "missing selector");
-        assembly ("memory-safe") {
-            selector := mload(add(data, 0x20))
-        }
+        selector = bytes4(data);
     }
 }

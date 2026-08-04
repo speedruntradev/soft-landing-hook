@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "attestation": "builder-declared-untrusted",
   "deploymentRecordId": "v4-poolmanager-ethereum",
-  "deploymentTrustTier": "official-address-runtime-observed-source-unresolved",
-  "authorityReferenceSha256": "sha256:ef7e12bf1312edf374749bfeb18ac41cb83623856fbfd39892606579b7119fd6",
-  "feedSha256": "sha256:35e36a2837a70688104cd6a4aae3da4e1401429226c8ca15d036db4cf2195d2c",
+  "deploymentTrustTier": "pinned-official-feed-snapshot",
+  "authorityReferenceSha256": "sha256:35e36a2837a70688104cd6a4aae3da4e1401429226c8ca15d036db4cf2195d2c",
+  "feedSha256": "225d2c77b3b53a9c9c1a8663359577bd1f52ed0c139e10e7ee846687959282d2",
   "feedSourceRepository": "https://github.com/Uniswap/contracts",
   "feedSourceCommit": "37936185dee7decf681360ec799c124e0e034672",
   "feedSourceRef": "v4-core@1.0.0",
@@ -17,8 +17,8 @@
   "observedBlock": 25679704,
   "rpcClass": "public-mainnet-rpc",
   "sourceRepository": "https://github.com/Uniswap/v4-core",
-  "sourceRevision": "59d3ecf53afa9264a16bba0e38f4c5d2231f80bc",
-  "sourceStatus": "package-pinned-runtime-observed-deployed-source-unresolved",
-  "verificationProvider": null,
-  "compiler": "Solidity 0.8.26; deployment compiler and settings not independently resolved"
+  "sourceRevision": "af7c077a438d5556b75f0ca722c6d3d53a7a1a9b",
+  "sourceStatus": "matched",
+  "verificationProvider": "sourcify",
+  "compiler": "Solidity 0.8.26+commit.8a97fa7a; Cancun; viaIR; optimizer 44,444,444; metadata bytecode hash none"
 }

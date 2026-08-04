@@ -12,6 +12,9 @@ Evidence in this contributor repository is local and builder-declared unless exp
 - Integration: real local v4 PoolManager, native quote and ERC-20 quote-as-currency1, all four swap quadrants, claims, partial-fill rollback, expiry, authentication, and permission mask.
 - Deterministic builder check: legacy `PROTOTYPE_READY`; authoritative implementation `STRUCTURALLY_COMPLETE`; design `DESIGN_REVIEW_REQUIRED` because the directional controller and irreversible expiry are novel capability extensions.
 - Repository closure: complete under the builder's declared-bytes and resolved Solidity/JavaScript import method.
+- Build-info normalization: Foundry 1.7.1 shortened `solcLongVersion` for a local compiler path; the committed
+  normalization script queried the exact executed binary, required matching `0.8.26`, and filled canonical identity
+  `0.8.26+commit.8a97fa7a` without changing standard-json compiler input or output.
 
 Exact source and tests are `src/SoftLandingHook.sol`, `src/SoftLandingHookFactory.sol`, `src/lib/FlowFeeMath.sol`, `test/unit/FlowFeeMath.t.sol`, `test/integration/SoftLandingHook.t.sol`, and `test/invariant/ControllerInvariant.t.sol`. Exact package dependency versions and registry integrity strings are in `package-lock.json`; source revisions are declared in `submission.json` and the review target.
 
@@ -25,7 +28,7 @@ The accounting invariant is `PoolManager quote claims held by hook = totalQuoteF
 
 ## Dependency observation
 
-Agent-derived runtime observation on Ethereum mainnet at block 25,679,704 found PoolManager `0x000000000004444c5dc75cB358380D2e3dE08A90` with code hash `0x785f1014552b7ce7d5fb7d0c970ca60edee94fd00425d7ca21609acac7ce1293`. `deployment-evidence.json` binds the official record and source revision. This is a public RPC observation, not an assertion that any Soft Landing contract is deployed or source-matched.
+Agent-derived runtime observation on Ethereum mainnet at block 25,679,704 found PoolManager `0x000000000004444c5dc75cB358380D2e3dE08A90` with code hash `0x785f1014552b7ce7d5fb7d0c970ca60edee94fd00425d7ca21609acac7ce1293`. `deployment-evidence.json` binds the official record and source revision. The Soft Landing hook is not deployed, and no source match for the hook is claimed.
 
 ## Open evidence and owners
 
@@ -35,7 +38,7 @@ Agent-derived runtime observation on Ethereum mainnet at block 25,679,704 found 
 | Security/accounting | No independent report | Independent reviewers assess return deltas, claims, solvency, and economics. |
 | Static analysis | Forge lint run; Slither unavailable locally | Reviewer runs Slither and records dispositions. |
 | Fork/router | Not run | Integrator pins a block and tests production Quoter/Router paths. |
-| Deployment | Not deployed | Authorized deployer records salt, initcode, constructor, address, receipt, and runtime. |
+| Deployment | No deployment is claimed | Authorized deployer records salt, initcode, constructor, address, receipt, and runtime. |
 | Verification | Not applicable yet | Independent verifier matches exact source/configuration after deployment. |
 | Product/indexer/monitoring | Not implemented | Product owners implement and test only after acceptance. |
 | Routing/discovery | Not requested/approved | Named providers decide independently. |

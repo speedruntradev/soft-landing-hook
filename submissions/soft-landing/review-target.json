@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "standardVersion": "1.5.0",
-  "submissionHash": "sha256:afcc683b411c8c0313777125a376a46fb8ece73210f19180d22f56b8492bc77e",
+  "submissionHash": "sha256:215e0e20cd73b560844cddaa2be1b186e137ffd5511b6931e2d0f21218b05c4a",
   "closureMethod": "declared-bytes-and-resolved-solidity-and-javascript-imports-v10",
   "closure": {
     "status": "complete",
@@ -11,8 +11,8 @@
     {
       "path": "EVIDENCE.md",
       "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 2153,
-      "sha256": "80cef3a3b015b98ebf046e822329b49835d14bb276c3c10e6f645a51fe8089c9"
+      "bytes": 2511,
+      "sha256": "ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679"
     },
     {
       "path": "MECHANISM.md",
@@ -35,8 +35,8 @@
     {
       "path": "foundry.toml",
       "kind": "compiler-config",
-      "bytes": 639,
-      "sha256": "534e05092873d38e2a2de632ee7e9690011d5193f9430cceda736c52d0ac88c0"
+      "bytes": 670,
+      "sha256": "9602e69220383ab5c1e5ea89fee4a650e9205984a9073348a6e1fcd425961964"
     },
     {
       "path": "node_modules/@openzeppelin/contracts/interfaces/IERC1363.sol",
@@ -1858,12 +1858,6 @@
       }
     },
     {
-      "path": "package-lock.json",
-      "kind": "dependency-lock",
-      "bytes": 1838,
-      "sha256": "f78addb4fe5f0c771d125a40e9bf99a1fb512d04ccdf024604d38e3e1f3455f3"
-    },
-    {
       "path": "remappings.txt",
       "kind": "compiler-remappings",
       "bytes": 354,
@@ -1896,56 +1890,62 @@
     {
       "path": "submissions/soft-landing/EVIDENCE.md",
       "kind": "package:EVIDENCE.md",
-      "bytes": 4939,
-      "sha256": "205edf7a21dcb3c070528ec999cc101579fe8f6f00c7430a17b713f8797933aa"
+      "bytes": 5029,
+      "sha256": "af7dd12eb31c178a2e080b9359b0594eddc8a288370db2fd8bdace909cb3c008"
     },
     {
       "path": "submissions/soft-landing/PROPOSAL.md",
       "kind": "package:PROPOSAL.md",
-      "bytes": 8857,
-      "sha256": "4e1bbd7d25aa9df6db445217eec8a84eb69c6e655f040b7b81cab6cc43b21ee9"
+      "bytes": 8717,
+      "sha256": "7e8c8f5b775921c0b61ac71672622d6a674be1f24b8ec75111aa6fee9484738e"
     },
     {
       "path": "submissions/soft-landing/TEST_PLAN.md",
       "kind": "package:TEST_PLAN.md",
-      "bytes": 9839,
-      "sha256": "487cfe560574cc71726971796d35e2f0c416fee798220be49cd58258f7e91f50"
+      "bytes": 4674,
+      "sha256": "a7ab072cf3675a1e08bb86b92b5cdcc001b36b36eeed6150d72b643e06acb53f"
     },
     {
       "path": "submissions/soft-landing/THREAT_MODEL.md",
       "kind": "package:THREAT_MODEL.md",
-      "bytes": 8235,
-      "sha256": "942878852d171a14bea4ba6923840e1fb6bfe1f13313428a8344c4e2d27e7a2f"
+      "bytes": 7527,
+      "sha256": "995368b12d855c158d08532f74cbaeeb51d189599fe397984da973d63efe3275"
     },
     {
       "path": "submissions/soft-landing/compatibility-report.json",
       "kind": "package:compatibility-report.json",
-      "bytes": 17649,
-      "sha256": "3e785c47832fec7bc74a47d4cd2c25092c3f49f14a99b9dd63bddbba5362139a"
+      "bytes": 18159,
+      "sha256": "709c484a6d826b15ba1b9049a2adfd284254cc4dd19bfb5e6012f65b758ce3d0"
+    },
+    {
+      "path": "submissions/soft-landing/dependency-lock.json",
+      "kind": "dependency-lock",
+      "bytes": 2445,
+      "sha256": "9570c07f1499b8184aba3d9e82523ffd138261b67af018f6a25574f34e4e7512"
     },
     {
       "path": "submissions/soft-landing/deployment-evidence.json",
       "kind": "deployment-evidence:Uniswap v4 PoolManager",
-      "bytes": 1322,
-      "sha256": "706a89a9076becf795f3d2f3c8f8b69aa6dc2fc52b5c287449a33d138b781735"
+      "bytes": 1269,
+      "sha256": "260af42bea92fe0692d28d43cba2858d26ae624d937fbdd804b2671c7c6735a3"
     },
     {
       "path": "submissions/soft-landing/submission.json",
       "kind": "package:submission.json",
-      "bytes": 80257,
-      "sha256": "3098aaf7b3d6a9be8b23d1c48cae7f7dfce919900d6c35391e8731aa7aeffec0"
+      "bytes": 80361,
+      "sha256": "ee37e7435cb8d824cd9974670ddcd329e56229f6619f7dd044c2163ca4bd6e92"
     },
     {
       "path": "test/helpers/MockToken.sol",
       "kind": "test-entry",
-      "bytes": 352,
-      "sha256": "488839047d4e2468cb258f744b660d35247881eeaf47246ac15359a0f7dc1491"
+      "bytes": 316,
+      "sha256": "22ab613303bf1684402f5d5cc617fc62ee1ef76d92dee934b67454072212bd38"
     },
     {
       "path": "test/integration/SoftLandingHook.t.sol",
       "kind": "test-entry",
-      "bytes": 17930,
-      "sha256": "a747baab645f6d33378149570f96e48ae791988fadf703fef516f825b5700a60"
+      "bytes": 17759,
+      "sha256": "cfbff7de5d48b0887e07366d02537a1be375c58b65fc7bdacd6e645452829485"
     },
     {
       "path": "test/invariant/ControllerInvariant.t.sol",
@@ -5072,5 +5072,5 @@
     }
   ],
   "javascriptImportResolutions": [],
-  "reviewTargetHash": "sha256:2f775972e36479493bee6f13262f9d0971b56be5bcdca6591e0f6ed167ff18d5"
+  "reviewTargetHash": "sha256:649eaeb1654cfdaca926e32dcbee234ded2941c315c566017155e3010563954d"
 }
