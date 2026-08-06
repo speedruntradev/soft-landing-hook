@@ -1,7 +1,7 @@
 {
-  "$schema": "urn:programmable:v4-hook-submission:1.3.0",
+  "$schema": "urn:programmable:v4-hook-submission:1.5.0",
   "schemaVersion": 1,
-  "standardVersion": "1.3.0",
+  "standardVersion": "1.5.0",
   "stage": "prototype",
   "model": {
     "id": "soft-landing",
@@ -49,7 +49,11 @@
         "evidenceUri": null
       }
     ],
-    "providerPresentations": []
+    "providerPresentations": [],
+    "localDiscoveryTags": [
+      "launch-congestion",
+      "soft-landing"
+    ]
   },
   "target": {
     "chainId": 1,
@@ -199,7 +203,7 @@
   },
   "programmableFee": {
     "policyId": "programmable-volume-fee-v1",
-    "policyVersion": "1.0.0",
+    "policyVersion": "1.1.0",
     "poolScope": "canonical-launch-pool-key",
     "rates": {
       "unit": "hundredths-of-bip",
@@ -255,7 +259,12 @@
       "crossPoolNetting": false,
       "valueFlowId": "programmable-volume-fee",
       "collectionEvent": "QuoteFeesAccrued(bytes32 indexed poolId,address indexed quoteCurrency,address indexed swapSender,bool isBuy,uint256 grossQuoteAmount,uint256 programmableFee,uint256 programmableRemainder)",
-      "claimEvent": "ProgrammableFeesClaimed(bytes32 indexed poolId,address indexed quoteCurrency,address indexed owner,address recipient,uint256 amount)"
+      "claimEvent": "ProgrammableFeesClaimed(bytes32 indexed poolId,address indexed quoteCurrency,address indexed owner,address recipient,uint256 amount)",
+      "roundingPolicy": "cumulative-independent-platform-project-remainders",
+      "remainderScope": "canonical-pool-lifetime",
+      "claimResetsRemainders": false,
+      "minimumGrossQuoteUnits": 1000,
+      "fragmentationResistant": true
     },
     "evidence": {
       "sourcePaths": [
@@ -989,6 +998,16 @@
       "selfApproval": false,
       "availabilityClaimed": false,
       "handoffNotes": "The custom hook, controller math, atomic factory, fee accounting, tests, and specifications are implemented. UI, API, production indexer, deployment, routing, monitoring, and availability remain separate maintainer-owned work."
+    },
+    "sdkSafetyProfile": {
+      "packageRootImportsOnly": null,
+      "hookedQuoteSource": null,
+      "localHookedPoolMathDisabled": null,
+      "hookDataParity": null,
+      "multiHopHookDataMode": null,
+      "perHopPriceBounds": null,
+      "slippageSemantics": null,
+      "deprecatedLiquidityActionsDisabled": null
     }
   },
   "projectSurfaces": [
@@ -1869,5 +1888,86 @@
     "The canonical application uses native ETH as currency0 quote and a standard fixed-supply launched token as currency1; the implementation tests both quote orderings.",
     "No wallet identity, tx.origin, holding time, allowlist, denylist, oracle, keeper, pause, upgrade, rescue, creator claim, project fee, or mutable fee setter exists."
   ],
-  "unresolved": []
+  "unresolved": [],
+  "builderTemplate": {
+    "schemaVersion": "1.0.0",
+    "source": "catalog",
+    "templateSelection": {
+      "catalogDigest": "a7875ce817fafd7ca4e0655e2937fa5a49b602283aa846e804732d18e6c1478e",
+      "selectionDigest": "3a0ef2146e48f619ec1d76cf056266e16dfe2252478643ea815e2a3034a0aac2",
+      "starterId": "custom-hook",
+      "requestedPackIds": [
+        "dynamic-lp-fee",
+        "programmable-volume-fee",
+        "test-evidence-threat-model"
+      ],
+      "defaultPackIds": [
+        "custom-hook-behavior",
+        "metadata-disclosures",
+        "programmable-volume-fee",
+        "test-evidence-threat-model"
+      ],
+      "autoIncludedPackIds": [],
+      "selectedPackIds": [
+        "custom-hook-behavior",
+        "dynamic-lp-fee",
+        "metadata-disclosures",
+        "programmable-volume-fee",
+        "test-evidence-threat-model"
+      ],
+      "selectedCapabilityIds": [
+        "canonical-v4-pool",
+        "claimable-platform-fee",
+        "custom-hook-behavior",
+        "dynamic-lp-fee",
+        "evidence-plan",
+        "provider-disclosures",
+        "public-metadata",
+        "quote-side-volume-accounting",
+        "security-properties"
+      ],
+      "customCapabilities": [
+        {
+          "id": "directional-block-congestion-controller",
+          "label": "Directional block congestion controller",
+          "catalogStatus": "unlisted",
+          "automaticDecision": "none",
+          "reviewRoute": "architecture-review-required",
+          "eligibilityEffect": "none"
+        },
+        {
+          "id": "irreversible-launch-expiry",
+          "label": "Irreversible launch expiry",
+          "catalogStatus": "unlisted",
+          "automaticDecision": "none",
+          "reviewRoute": "architecture-review-required",
+          "eligibilityEffect": "none"
+        }
+      ],
+      "ownerProvidedLocalTags": [
+        "launch-congestion",
+        "soft-landing"
+      ],
+      "localProjectTags": [
+        "canonical-v4-pool",
+        "claimable-platform-fee",
+        "custom-hook",
+        "custom-hook-behavior",
+        "directional-block-congestion-controller",
+        "dynamic-lp-fee",
+        "evidence-plan",
+        "irreversible-launch-expiry",
+        "launch-congestion",
+        "metadata-disclosures",
+        "programmable-volume-fee",
+        "provider-disclosures",
+        "public-metadata",
+        "quote-side-volume-accounting",
+        "security-properties",
+        "soft-landing",
+        "test-evidence-threat-model"
+      ]
+    }
+  },
+  "tokenMechanics": null
 }

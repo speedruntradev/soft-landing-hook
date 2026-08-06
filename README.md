@@ -11,7 +11,7 @@ the base LP fee after the configured warmup window. It uses no oracle, keeper, u
 `tx.origin`, mutable fee authority, creator claim, project hook charge, or custom AMM curve.
 
 The hook separately enforces Programmable's mandatory 10 bps claimable volume fee under policy
-`programmable-volume-fee-v1@1.0.0`. That charge is denominated in the canonical quote asset and belongs only to the
+`programmable-volume-fee-v1@1.1.0`. That charge is denominated in the canonical quote asset and belongs only to the
 immutable Programmable owner. LP fees remain separate and belong to LPs.
 
 ## Quick start

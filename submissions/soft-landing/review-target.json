@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "standardVersion": "1.3.0",
-  "submissionHash": "sha256:ecef0c065af9962a68d4e2fe180492f773f2d062e49aaa08f11bafcd9bcdb0b6",
+  "standardVersion": "1.5.0",
+  "submissionHash": "sha256:49396e8a27f60bd0b7cf6b0c28a3abebf5a86badf57cfafc8e2925362645a36e",
   "closureMethod": "declared-bytes-and-resolved-solidity-and-javascript-imports-v10",
   "closure": {
     "status": "complete",
@@ -18,13 +18,13 @@
       "path": "MECHANISM.md",
       "kind": "project-surface-evidence:soft-landing-hook",
       "bytes": 6947,
-      "sha256": "f3b58e1035e2662527515475221af841da747e4cd35cf98e3aaa49fa7790262c"
+      "sha256": "ce2b5e65fb26f651dc92082f9f9b00aa9c9fb75396e6b3b336e48548aaa53652"
     },
     {
       "path": "README.md",
       "kind": "project-surface-evidence:soft-landing-hook",
       "bytes": 2584,
-      "sha256": "c6302757aa28b4965afef9716ab4f138b3d2784c3843239c37912dd595271247"
+      "sha256": "ba877ce7313e5d532a01d2c6bfbc6498ce6d7646b9a8aaaff3a095d1d31cbd1f"
     },
     {
       "path": "SECURITY.md",
@@ -1891,13 +1891,13 @@
       "path": "submissions/soft-landing/EVIDENCE.md",
       "kind": "package:EVIDENCE.md",
       "bytes": 5407,
-      "sha256": "99f2f98c6691fc32ec6f0997352a695e664e5bc8f2706b35edb2bbd1538e7251"
+      "sha256": "bd8d5c785668074f0b62900b898b9d157dfabb89bec1b66deb6ed69df50c35dd"
     },
     {
       "path": "submissions/soft-landing/PROPOSAL.md",
       "kind": "package:PROPOSAL.md",
-      "bytes": 9043,
-      "sha256": "d7202c22a9e4522c4d0334f1b7698c2e82070a1614a72ab5f462750c9d2f8677"
+      "bytes": 9138,
+      "sha256": "c05b22aa4a27b475bc7555cc91fbe35fa772a381c1ac7f212b7b61e11c2c1009"
     },
     {
       "path": "submissions/soft-landing/TEST_PLAN.md",
@@ -1914,8 +1914,8 @@
     {
       "path": "submissions/soft-landing/compatibility-report.json",
       "kind": "package:compatibility-report.json",
-      "bytes": 17277,
-      "sha256": "b13468b13c05d92b87bf8127f086965748a8249fff29847b03dad13d17683bba"
+      "bytes": 18159,
+      "sha256": "0bae8a076dd5c9ce87e2b683690e9fcc2d5f5ee6d422a9cfc28f711760d41e80"
     },
     {
       "path": "submissions/soft-landing/dependency-lock.json",
@@ -1932,8 +1932,8 @@
     {
       "path": "submissions/soft-landing/submission.json",
       "kind": "package:submission.json",
-      "bytes": 77485,
-      "sha256": "fe2ee5f34985186592d4c15fbf19bcde4a4523f8ab21d0c56ca797f9197c5687"
+      "bytes": 80671,
+      "sha256": "f9c806438f0319676e00c3f58083183270c075c15a375ba06fda5c56b5730f15"
     },
     {
       "path": "test/helpers/MockToken.sol",
@@ -5054,5 +5054,5 @@
     }
   ],
   "javascriptImportResolutions": [],
-  "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
+  "reviewTargetHash": "sha256:d52c7a56a90e2af929e688af0042f6e70312279d80f8aa9f0d0e44055af48ea0"
 }

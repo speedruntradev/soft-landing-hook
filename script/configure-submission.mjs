@@ -5,18 +5,101 @@ import fs from "node:fs";
 const path = new URL("../submissions/soft-landing/submission.json", import.meta.url);
 const submission = JSON.parse(fs.readFileSync(path, "utf8"));
 
-submission.$schema = "urn:programmable:v4-hook-submission:1.3.0";
-submission.standardVersion = "1.3.0";
-delete submission.builderTemplate;
-delete submission.publicMetadata.localDiscoveryTags;
-delete submission.integration.sdkSafetyProfile;
-delete submission.tokenMechanics;
-submission.programmableFee.policyVersion = "1.0.0";
-delete submission.programmableFee.accounting.roundingPolicy;
-delete submission.programmableFee.accounting.remainderScope;
-delete submission.programmableFee.accounting.claimResetsRemainders;
-delete submission.programmableFee.accounting.minimumGrossQuoteUnits;
-delete submission.programmableFee.accounting.fragmentationResistant;
+submission.$schema = "urn:programmable:v4-hook-submission:1.5.0";
+submission.standardVersion = "1.5.0";
+submission.builderTemplate = {
+  schemaVersion: "1.0.0",
+  source: "catalog",
+  templateSelection: {
+    catalogDigest: "a7875ce817fafd7ca4e0655e2937fa5a49b602283aa846e804732d18e6c1478e",
+    selectionDigest: "3a0ef2146e48f619ec1d76cf056266e16dfe2252478643ea815e2a3034a0aac2",
+    starterId: "custom-hook",
+    requestedPackIds: ["dynamic-lp-fee", "programmable-volume-fee", "test-evidence-threat-model"],
+    defaultPackIds: [
+      "custom-hook-behavior",
+      "metadata-disclosures",
+      "programmable-volume-fee",
+      "test-evidence-threat-model",
+    ],
+    autoIncludedPackIds: [],
+    selectedPackIds: [
+      "custom-hook-behavior",
+      "dynamic-lp-fee",
+      "metadata-disclosures",
+      "programmable-volume-fee",
+      "test-evidence-threat-model",
+    ],
+    selectedCapabilityIds: [
+      "canonical-v4-pool",
+      "claimable-platform-fee",
+      "custom-hook-behavior",
+      "dynamic-lp-fee",
+      "evidence-plan",
+      "provider-disclosures",
+      "public-metadata",
+      "quote-side-volume-accounting",
+      "security-properties",
+    ],
+    customCapabilities: [
+      {
+        id: "directional-block-congestion-controller",
+        label: "Directional block congestion controller",
+        catalogStatus: "unlisted",
+        automaticDecision: "none",
+        reviewRoute: "architecture-review-required",
+        eligibilityEffect: "none",
+      },
+      {
+        id: "irreversible-launch-expiry",
+        label: "Irreversible launch expiry",
+        catalogStatus: "unlisted",
+        automaticDecision: "none",
+        reviewRoute: "architecture-review-required",
+        eligibilityEffect: "none",
+      },
+    ],
+    ownerProvidedLocalTags: ["launch-congestion", "soft-landing"],
+    localProjectTags: [
+      "canonical-v4-pool",
+      "claimable-platform-fee",
+      "custom-hook",
+      "custom-hook-behavior",
+      "directional-block-congestion-controller",
+      "dynamic-lp-fee",
+      "evidence-plan",
+      "irreversible-launch-expiry",
+      "launch-congestion",
+      "metadata-disclosures",
+      "programmable-volume-fee",
+      "provider-disclosures",
+      "public-metadata",
+      "quote-side-volume-accounting",
+      "security-properties",
+      "soft-landing",
+      "test-evidence-threat-model",
+    ],
+  },
+};
+submission.publicMetadata.localDiscoveryTags = ["launch-congestion", "soft-landing"];
+submission.programmableFee.policyVersion = "1.1.0";
+Object.assign(submission.programmableFee.accounting, {
+  roundingPolicy: "cumulative-independent-platform-project-remainders",
+  remainderScope: "canonical-pool-lifetime",
+  claimResetsRemainders: false,
+  minimumGrossQuoteUnits: 1000,
+  fragmentationResistant: true,
+});
+submission.integration.sdkSafetyProfile = {
+  packageRootImportsOnly: null,
+  hookedQuoteSource: null,
+  localHookedPoolMathDisabled: null,
+  hookDataParity: null,
+  multiHopHookDataMode: null,
+  perHopPriceBounds: null,
+  slippageSemantics: null,
+  deprecatedLiquidityActionsDisabled: null,
+};
+submission.tokenMechanics = null;
 
 const SOURCE_PATHS = [
   "src/SoftLandingHook.sol",
