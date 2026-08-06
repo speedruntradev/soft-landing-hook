@@ -38,6 +38,14 @@ struct SoftLandingConfig {
     uint256 targetQuotePerBlock;
 }
 
+/// @notice Launch-defining PoolKey members and initialization price committed into the hook initcode.
+struct SoftLandingLaunchConfig {
+    Currency currency0;
+    Currency currency1;
+    int24 tickSpacing;
+    uint160 sqrtPriceX96;
+}
+
 /// @title Soft Landing
 /// @notice Block-stable directional congestion pricing for one Uniswap v4 launch pool.
 /// @dev Prototype only. This contract is not independently audited, approved, deployed, routed, or live.
@@ -65,6 +73,10 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
 
     address public immutable registrar;
     address public immutable quoteCurrencyAddress;
+    address public immutable canonicalCurrency0;
+    address public immutable canonicalCurrency1;
+    int24 public immutable canonicalTickSpacing;
+    uint160 public immutable initialSqrtPriceX96;
     uint24 public immutable baseFeePips;
     uint24 public immutable initialBuyFeePips;
     uint24 public immutable initialSellFeePips;
@@ -111,6 +123,7 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
     error UnauthorizedInitializer(address caller, address expected);
     error UnauthorizedRegistrar(address caller, address expected);
     error UnexpectedPool(bytes32 actual, bytes32 expected);
+    error UnexpectedSqrtPrice(uint160 actual, uint160 expected);
     error UnexpectedUnlockData();
     error UnexpectedUnlockResult();
     error ZeroAddress();
@@ -160,16 +173,22 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
         IPoolManager poolManager_,
         address registrar_,
         address quoteCurrencyAddress_,
-        SoftLandingConfig memory config
+        SoftLandingConfig memory config,
+        SoftLandingLaunchConfig memory launchConfig
     ) BaseHook(poolManager_) {
         if (address(poolManager_) == address(0) || registrar_ == address(0)) {
             revert ZeroAddress();
         }
         _validateControllerConfig(config);
+        _validateLaunchConfig(quoteCurrencyAddress_, launchConfig);
         registrar = registrar_;
         // address(0) is Uniswap v4's canonical native-currency representation.
         // slither-disable-next-line missing-zero-check
         quoteCurrencyAddress = quoteCurrencyAddress_;
+        canonicalCurrency0 = Currency.unwrap(launchConfig.currency0);
+        canonicalCurrency1 = Currency.unwrap(launchConfig.currency1);
+        canonicalTickSpacing = launchConfig.tickSpacing;
+        initialSqrtPriceX96 = launchConfig.sqrtPriceX96;
         baseFeePips = config.baseFeePips;
         initialBuyFeePips = config.initialBuyFeePips;
         initialSellFeePips = config.initialSellFeePips;
@@ -184,21 +203,17 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
     }
 
     /// @notice Atomically binds and initializes the only PoolKey accepted by this hook.
-    function registerCanonicalPool(PoolKey calldata key, uint160 sqrtPriceX96)
-        external
-        nonReentrant
-        returns (bytes32 poolId, int24 initialTick)
-    {
+    function registerCanonicalPool() external nonReentrant returns (bytes32 poolId, int24 initialTick) {
         if (msg.sender != registrar) revert UnauthorizedRegistrar(msg.sender, registrar);
         if (canonicalPoolRegistered) revert AlreadyRegistered(canonicalPoolId);
-        _validatePoolShape(key);
+        PoolKey memory key = canonicalPoolKey();
 
         poolId = PoolId.unwrap(key.toId());
         canonicalPoolId = poolId;
         canonicalPoolRegistered = true;
         quoteIsCurrency0 = Currency.unwrap(key.currency0) == quoteCurrencyAddress;
 
-        initialTick = poolManager.initialize(key, sqrtPriceX96);
+        initialTick = poolManager.initialize(key, initialSqrtPriceX96);
         // Preserve an explicit stored base fee even though every swap uses a directional override.
         poolManager.updateDynamicLPFee(key, baseFeePips);
         emit CanonicalPoolRegistered(
@@ -211,6 +226,17 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
             initialSellFeePips,
             maxFeePips
         );
+    }
+
+    /// @notice Returns the only PoolKey whose members were committed into this deployment's CREATE2 initcode.
+    function canonicalPoolKey() public view returns (PoolKey memory key) {
+        key = PoolKey({
+            currency0: Currency.wrap(canonicalCurrency0),
+            currency1: Currency.wrap(canonicalCurrency1),
+            fee: LPFeeLibrary.DYNAMIC_FEE_FLAG,
+            tickSpacing: canonicalTickSpacing,
+            hooks: IHooks(address(this))
+        });
     }
 
     function currentFee(bool isBuy) external view returns (uint24) {
@@ -278,9 +304,17 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
         });
     }
 
-    function _beforeInitialize(address sender, PoolKey calldata key, uint160) internal view override returns (bytes4) {
+    function _beforeInitialize(address sender, PoolKey calldata key, uint160 sqrtPriceX96)
+        internal
+        view
+        override
+        returns (bytes4)
+    {
         _requireCanonicalPool(key);
         if (sender != address(this)) revert UnauthorizedInitializer(sender, address(this));
+        if (sqrtPriceX96 != initialSqrtPriceX96) {
+            revert UnexpectedSqrtPrice(sqrtPriceX96, initialSqrtPriceX96);
+        }
         return IHooks.beforeInitialize.selector;
     }
 
@@ -505,6 +539,21 @@ contract SoftLandingHook is BaseHook, IUnlockCallback, ReentrancyGuardTransient 
             || config.warmupBlocks > MAX_WARMUP_BLOCKS || config.targetQuotePerBlock == 0
             || config.targetQuotePerBlock > type(uint128).max;
         if (invalid) revert InvalidControllerConfiguration();
+    }
+
+    function _validateLaunchConfig(address quoteCurrency, SoftLandingLaunchConfig memory launchConfig) private pure {
+        address currency0 = Currency.unwrap(launchConfig.currency0);
+        address currency1 = Currency.unwrap(launchConfig.currency1);
+        if (currency0 >= currency1) revert CurrenciesOutOfOrderOrEqual(currency0, currency1);
+        if (currency0 != quoteCurrency && currency1 != quoteCurrency) {
+            revert InvalidQuoteCurrency(currency0, currency1, quoteCurrency);
+        }
+        if (
+            launchConfig.tickSpacing < TickMath.MIN_TICK_SPACING || launchConfig.tickSpacing > TickMath.MAX_TICK_SPACING
+        ) {
+            revert InvalidTickSpacing(launchConfig.tickSpacing);
+        }
+        TickMath.getTickAtSqrtPrice(launchConfig.sqrtPriceX96);
     }
 
     function _quoteDelta(BalanceDelta delta) private view returns (int256) {

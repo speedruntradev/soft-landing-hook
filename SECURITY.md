@@ -5,7 +5,9 @@ Status: prototype; not independently audited or deployed.
 ## Trust and authority
 
 - The immutable PoolManager is the only callback and unlock-callback caller.
-- The factory deploys, binds, and initializes one canonical PoolKey atomically.
+- The factory commits the PoolManager, quote asset, controller parameters, both currencies, dynamic fee flag, tick
+  spacing, and initial sqrt price to the hook's CREATE2 initcode, then deploys and initializes that exact PoolKey
+  atomically.
 - No creator, builder, project, administrator, or mutable role can change controller parameters, pause swaps, upgrade
   code, rescue assets, or claim fees.
 - The only privileged function is the immutable Programmable owner's claim of its own accrued 10 bps liability, to a
@@ -24,7 +26,8 @@ Status: prototype; not independently audited or deployed.
 
 ## Callback and lifecycle properties
 
-- Only the canonical dynamic-fee PoolKey is accepted.
+- Only the canonical dynamic-fee PoolKey reconstructed from constructor immutables is accepted. Initialization takes
+  no caller-supplied PoolKey or price, and the callback verifies the committed initial sqrt price.
 - The enabled callbacks are exactly `beforeInitialize`, `beforeSwap`, and `afterSwap`, with before/after swap return
   deltas. All other permissions are off.
 - Quote-specified partial fills revert atomically, including controller start, flow, and pre-swap liability writes.

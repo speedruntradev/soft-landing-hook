@@ -31,6 +31,18 @@ Constructor validation requires:
 0 < warmup blocks <= 1,000,000
 ```
 
+## Deployment identity and initialization
+
+The factory includes the PoolManager, registrar, quote currency, all controller parameters, both PoolKey currencies,
+tick spacing, and initial sqrt price in the hook constructor encoding. The dynamic-fee flag is fixed in the hook's
+creation code, and the hook address supplies the PoolKey's hook member. Consequently every launch-defining PoolKey
+member and initialization parameter changes the CREATE2 initcode hash and predicted deployment address.
+
+The caller supplies the address mined for the exact launch configuration. The factory recomputes it and reverts with
+`LaunchIdentityMismatch` before deployment if any parameter drift produces a different address. After deployment the
+factory obtains the PoolKey from hook immutables and calls a no-argument registration function; callers cannot swap in
+a different PoolKey or initial price between address mining and initialization.
+
 ## Economic direction
 
 Direction is defined by the quote asset, not by token ordering:

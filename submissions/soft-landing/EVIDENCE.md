@@ -6,10 +6,12 @@ Evidence in this contributor repository is local and builder-declared unless exp
 
 - `forge fmt --check`: passed locally after formatting.
 - `forge build --sizes`: passed with Solidity 0.8.26, Cancun, optimizer 200, via-IR, metadata hash disabled, and FFI disabled.
-- `forge test -vvv`: 20 tests passed, 0 failed, 0 skipped across three suites.
+- `forge test -vvv`: 22 tests passed, 0 failed, 0 skipped across three suites.
 - Fuzzing: 512 runs each for controller bounds/monotonicity, skipped-decay equivalence, gross fee accounting, and exact-output rounding.
 - Invariants: two invariants × 128 runs × 48 calls = 12,288 useful calls, zero reverts and zero discards.
-- Integration: real local v4 PoolManager, native quote and ERC-20 quote-as-currency1, all four swap quadrants, claims, partial-fill rollback, expiry, authentication, and permission mask.
+- Integration: real local v4 PoolManager, native quote and ERC-20 quote-as-currency1, all four swap quadrants, claims,
+  partial-fill rollback, expiry, authentication, permission mask, full launch-parameter initcode binding, and
+  expected-address mismatch rejection.
 - Deterministic builder check: legacy `PROTOTYPE_READY`; authoritative implementation `STRUCTURALLY_COMPLETE`; design `DESIGN_REVIEW_REQUIRED` because the directional controller and irreversible expiry are novel capability extensions.
 - Repository closure: complete under the builder's declared-bytes and resolved Solidity/JavaScript import method.
 - Build-info normalization: Foundry 1.7.1 shortened `solcLongVersion` for a local compiler path; the committed
@@ -22,7 +24,7 @@ Exact source and tests are `src/SoftLandingHook.sol`, `src/SoftLandingHookFactor
 
 Policy: `programmable-volume-fee-v1@1.0.0`. Canonical basis: executed gross quote-side volume. Selected project fee: zero. Effective split: 10 bps Programmable, zero project. Owner and sole claim authority: `0x4957f49620AFf3Adbbe8195a4f633E49cc93376c`. Accrual mode: claimable liability. Claim availability: anytime to a nonzero owner-selected per-claim destination.
 
-`testAllNativeQuoteQuadrantsAccrueExecutedGrossQuote` and `testErc20QuoteCurrencyOneCoversAllFourQuadrants` cover buy/sell × exact-input/exact-output and both quote positions. `testSpecifiedQuotePartialFillRevertsAtomically` covers fail-closed precollection. `testCumulativeRemainderResistsFragmentation`, `testDustAndExactOutputRounding`, and both fee fuzz tests cover rounding and the 1,000-unit minimum. `testProgrammableOwnerOnlyClaimToPerClaimDestination` reconciles liability and PoolManager claims through authorization and redemption. `testCanonicalPoolAndCallbackAuthentication` establishes the one-pool/no-cross-pool boundary. The hook exposes no same-pool swap function.
+`testAllNativeQuoteQuadrantsAccrueExecutedGrossQuote` and `testErc20QuoteCurrencyOneCoversAllFourQuadrants` cover buy/sell × exact-input/exact-output and both quote positions. `testSpecifiedQuotePartialFillRevertsAtomically` covers fail-closed precollection. `testCumulativeRemainderResistsFragmentation`, `testDustAndExactOutputRounding`, and both fee fuzz tests cover rounding and the 1,000-unit minimum. `testProgrammableOwnerOnlyClaimToPerClaimDestination` reconciles liability and PoolManager claims through authorization and redemption. `testCanonicalPoolAndCallbackAuthentication` establishes the one-pool/no-cross-pool boundary and committed initialization price. `testCreate2IdentityBindsEveryLaunchParameter` proves that either currency, tick spacing, or initial sqrt price changes the initcode hash. `testLaunchIdentityMismatchRevertsBeforeDeployment` proves that parameter drift from a mined launch identity fails closed. The hook exposes no same-pool swap function.
 
 The accounting invariant is `PoolManager quote claims held by hook = totalQuoteFeesAccrued = liability(canonical PoolId, quote, owner)`. Claims burn exact backing and do not reset `programmableFeeRemainder`.
 

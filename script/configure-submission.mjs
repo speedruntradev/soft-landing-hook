@@ -99,11 +99,11 @@ lifecycle.tokenCreation = {
 lifecycle.poolInitialization = {
   applicable: true,
   actor:
-    "Anyone may call the factory with immutable configuration and a mined salt; the factory deploys the hook, binds its exact dynamic-fee PoolKey, and initializes PoolManager atomically.",
+    "Anyone may call the factory with immutable configuration, the expected hook address, and a mined salt; every PoolKey member and the initial sqrt price are committed to the CREATE2 identity before atomic deployment and initialization.",
   valueFlow: "No value moves; the hook records one canonical PoolId and the factory records a configuration hash.",
   custody: "No custody exists at initialization.",
   failure:
-    "Invalid configuration, permission bits, PoolKey shape, quote asset, tick spacing, salt, or initial price reverts deployment and registration together.",
+    "Invalid configuration, permission bits, PoolKey shape, quote asset, tick spacing, salt, initial price, or expected CREATE2 identity reverts deployment and registration together.",
   event: "SoftLandingHookDeployed and CanonicalPoolRegistered.",
   notApplicableReason: null,
 };
@@ -205,7 +205,8 @@ hook.upgradeable = false;
 hook.sharedAcrossPools = false;
 hook.poolNamespace = "One hook deployment admits one atomically registered PoolId; all controller and liability state belongs to it.";
 hook.poolAdmission = {
-  enforcement: "SoftLandingHookFactory deploys, binds, and initializes exactly one dynamic-fee PoolKey in one transaction.",
+  enforcement:
+    "SoftLandingHookFactory commits the full dynamic-fee PoolKey and initial sqrt price to hook initcode, verifies the expected CREATE2 address, and initializes exactly that immutable configuration in one transaction.",
   factoryOrRegistry: "SoftLandingHookFactory is the immutable one-shot registrar; its deploy function is permissionless and has no later control.",
   alternativePoolBehavior: "Alternative pools may exist but this hook rejects them and no policy coverage is implied.",
   rejectionRule: "Revert every callback from a non-PoolManager caller or PoolKey whose derived PoolId differs from canonicalPoolId.",
@@ -229,8 +230,9 @@ hook.permissions = {
 hook.callbackPolicies = [
   {
     callback: "beforeInitialize",
-    necessity: "Authenticates atomic self-initialization of the already bound canonical PoolKey.",
-    allowedReverts: "Wrong sender, PoolKey, quote asset, dynamic flag, or repeat registration reverts initialization.",
+    necessity: "Authenticates atomic self-initialization of the constructor-bound canonical PoolKey at its committed price.",
+    allowedReverts:
+      "Wrong sender, PoolKey, quote asset, dynamic flag, initial sqrt price, CREATE2 identity, or repeat registration reverts initialization.",
     userExitImpact: "Initialization occurs before liquidity and cannot govern later LP exits.",
     noSelfCallImpact: "The callback performs no swap or liquidity action.",
   },
@@ -701,7 +703,9 @@ submission.authorities = [
   {
     role: "Immutable launch configuration",
     controller: "none; constructor and atomic registration only",
-    capabilities: ["No party can mutate targets, fees, duration, quote asset, PoolManager, or canonical PoolId."],
+    capabilities: [
+      "No party can mutate fees, duration, PoolManager, quote, currencies, tick spacing, initial price, or canonical PoolId.",
+    ],
     mutable: false,
     delay: null,
     userExitImpact: "No authority can pause or selectively block a trader or LP exit.",
@@ -921,7 +925,8 @@ submission.risk = {
     externalLiquidity: "The hook holds quote ERC-6909 claims backing one fee liability but no LP or external protocol position.",
     valueAtRisk: "The hook custodies accrued 10 bps claims until the immutable owner claims them.",
     teamMaturity: "Conservative nonzero process score until independent review and fork evidence complete.",
-    upgradeability: "Hook, controller, owner, quote, PoolId, parameters, and factory registration are immutable.",
+    upgradeability:
+      "Hook, controller, owner, quote, full PoolKey, initial sqrt price, PoolId, parameters, and factory registration are immutable.",
     autonomy: "State changes only during user-initiated swaps; no independent agent, keeper, or mutable control acts.",
     priceImpact: "The bounded LP fee changes swap cost but core concentrated-liquidity price formation remains unchanged.",
   },

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "standardVersion": "1.3.0",
-  "submissionHash": "sha256:d5d625a3d75a6509d18782c02a53b611b29c4f0a766ee3e238269d3eb643191f",
+  "submissionHash": "sha256:ecef0c065af9962a68d4e2fe180492f773f2d062e49aaa08f11bafcd9bcdb0b6",
   "closureMethod": "declared-bytes-and-resolved-solidity-and-javascript-imports-v10",
   "closure": {
     "status": "complete",
@@ -17,20 +17,20 @@
     {
       "path": "MECHANISM.md",
       "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 6018,
-      "sha256": "dc3b6ddbc04baa92ac4eb786b70b24e3c51255278dbb23904f728404aec14def"
+      "bytes": 6947,
+      "sha256": "f3b58e1035e2662527515475221af841da747e4cd35cf98e3aaa49fa7790262c"
     },
     {
       "path": "README.md",
       "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 2137,
-      "sha256": "1f1c75420c38e001289c34659da922faa1427e148448d45898cad2860d3ef08a"
+      "bytes": 2584,
+      "sha256": "c6302757aa28b4965afef9716ab4f138b3d2784c3843239c37912dd595271247"
     },
     {
       "path": "SECURITY.md",
       "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 3663,
-      "sha256": "efc359ac40c8e5df5ecddd8cab6326a858333fcb097e622433393b0da012164a"
+      "bytes": 3988,
+      "sha256": "b765898bed470a98f7f8869f596b574c7c4f2696ab0adac5f770df5099273f9e"
     },
     {
       "path": "foundry.toml",
@@ -1872,14 +1872,14 @@
     {
       "path": "src/SoftLandingHook.sol",
       "kind": "source-entry",
-      "bytes": 23523,
-      "sha256": "c39af5c3cd986b96cf9e1bda667608d64e81a8eb30991e9d042e0eb08624ebe4"
+      "bytes": 25817,
+      "sha256": "3a707080274c1054b4218ec44ecfd986b4164613b5fcc4aba11fdd894403bd8d"
     },
     {
       "path": "src/SoftLandingHookFactory.sol",
       "kind": "source-entry",
-      "bytes": 3860,
-      "sha256": "2d011be3e6159b6b22aea593b55c66de2b83bf7477b728273a29444ca4c36a5d"
+      "bytes": 4384,
+      "sha256": "50ed88cf1550bdbb4e7fc1d00513be0813db51ea4dcaad0c555684f465d7c33a"
     },
     {
       "path": "src/lib/FlowFeeMath.sol",
@@ -1890,32 +1890,32 @@
     {
       "path": "submissions/soft-landing/EVIDENCE.md",
       "kind": "package:EVIDENCE.md",
-      "bytes": 5029,
-      "sha256": "4e75c35efc13110611ccf0f33a00c9caab87cfb33fe3ecc53e23e887069800dd"
+      "bytes": 5407,
+      "sha256": "99f2f98c6691fc32ec6f0997352a695e664e5bc8f2706b35edb2bbd1538e7251"
     },
     {
       "path": "submissions/soft-landing/PROPOSAL.md",
       "kind": "package:PROPOSAL.md",
-      "bytes": 8717,
-      "sha256": "633a1f23fe1b5185deb08c0966ed08aefc4e2efb00f46f1474146f021dfd3d92"
+      "bytes": 9043,
+      "sha256": "d7202c22a9e4522c4d0334f1b7698c2e82070a1614a72ab5f462750c9d2f8677"
     },
     {
       "path": "submissions/soft-landing/TEST_PLAN.md",
       "kind": "package:TEST_PLAN.md",
-      "bytes": 4674,
-      "sha256": "a7ab072cf3675a1e08bb86b92b5cdcc001b36b36eeed6150d72b643e06acb53f"
+      "bytes": 4944,
+      "sha256": "73187aa363ce6fe5904ebd023785075ab282154b5ebe60005525a32edde70174"
     },
     {
       "path": "submissions/soft-landing/THREAT_MODEL.md",
       "kind": "package:THREAT_MODEL.md",
-      "bytes": 7527,
-      "sha256": "995368b12d855c158d08532f74cbaeeb51d189599fe397984da973d63efe3275"
+      "bytes": 7724,
+      "sha256": "ef61e6d835293c71cc0b16660e607a01f9f01351a5139bbe16e3376c567efca5"
     },
     {
       "path": "submissions/soft-landing/compatibility-report.json",
       "kind": "package:compatibility-report.json",
       "bytes": 17277,
-      "sha256": "18efc8b4053de842d63fb471f58d322b3f4b792c8eec7648ac2acfb3e232a26c"
+      "sha256": "b13468b13c05d92b87bf8127f086965748a8249fff29847b03dad13d17683bba"
     },
     {
       "path": "submissions/soft-landing/dependency-lock.json",
@@ -1932,8 +1932,8 @@
     {
       "path": "submissions/soft-landing/submission.json",
       "kind": "package:submission.json",
-      "bytes": 77175,
-      "sha256": "e7f2f98cee282e60b1d42e71cdfc34777b5c0b88e60343e6459df12081d73802"
+      "bytes": 77485,
+      "sha256": "fe2ee5f34985186592d4c15fbf19bcde4a4523f8ab21d0c56ca797f9197c5687"
     },
     {
       "path": "test/helpers/MockToken.sol",
@@ -1944,8 +1944,8 @@
     {
       "path": "test/integration/SoftLandingHook.t.sol",
       "kind": "test-entry",
-      "bytes": 17759,
-      "sha256": "cfbff7de5d48b0887e07366d02537a1be375c58b65fc7bdacd6e645452829485"
+      "bytes": 20925,
+      "sha256": "87d0ca26a60fec6450c0b6f6bdf0d502513fa74d461724a3791efc065ad4371b"
     },
     {
       "path": "test/invariant/ControllerInvariant.t.sol",
@@ -4748,15 +4748,6 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/libraries/LPFeeLibrary.sol",
-      "importer": "src/SoftLandingHookFactory.sol",
-      "remappingPrefix": "@uniswap/v4-core/",
-      "remappingTarget": "node_modules/@uniswap/v4-core/",
-      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/LPFeeLibrary.sol",
-      "kind": "solidity-package-dependency-import",
-      "packageName": "@uniswap/v4-core"
-    },
-    {
-      "specifier": "@uniswap/v4-core/src/libraries/LPFeeLibrary.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
@@ -4857,15 +4848,6 @@
     {
       "specifier": "@uniswap/v4-core/src/types/Currency.sol",
       "importer": "src/SoftLandingHook.sol",
-      "remappingPrefix": "@uniswap/v4-core/",
-      "remappingTarget": "node_modules/@uniswap/v4-core/",
-      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/Currency.sol",
-      "kind": "solidity-package-dependency-import",
-      "packageName": "@uniswap/v4-core"
-    },
-    {
-      "specifier": "@uniswap/v4-core/src/types/Currency.sol",
-      "importer": "src/SoftLandingHookFactory.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/types/Currency.sol",
@@ -5072,5 +5054,5 @@
     }
   ],
   "javascriptImportResolutions": [],
-  "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+  "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
 }

@@ -19,7 +19,7 @@ import { PoolSwapTest } from "@uniswap/v4-core/src/test/PoolSwapTest.sol";
 import { Deployers } from "@uniswap/v4-core/test/utils/Deployers.sol";
 import { HookMiner } from "@uniswap/v4-periphery/src/utils/HookMiner.sol";
 
-import { SoftLandingConfig, SoftLandingHook } from "../../src/SoftLandingHook.sol";
+import { SoftLandingConfig, SoftLandingHook, SoftLandingLaunchConfig } from "../../src/SoftLandingHook.sol";
 import { SoftLandingHookFactory } from "../../src/SoftLandingHookFactory.sol";
 import { MockToken } from "../helpers/MockToken.sol";
 
@@ -313,6 +313,50 @@ contract SoftLandingHookTest is Deployers {
         hook.afterSwap(address(this), hookKey, params, BalanceDelta.wrap(0), ZERO_BYTES);
         vm.expectRevert(BaseHook.NotPoolManager.selector);
         hook.unlockCallback(ZERO_BYTES);
+
+        uint160 wrongSqrtPriceX96 = TickMath.getSqrtPriceAtTick(1);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                SoftLandingHook.UnexpectedSqrtPrice.selector, wrongSqrtPriceX96, hook.initialSqrtPriceX96()
+            )
+        );
+        vm.prank(address(manager));
+        hook.beforeInitialize(address(hook), hookKey, wrongSqrtPriceX96);
+    }
+
+    function testCreate2IdentityBindsEveryLaunchParameter() public view {
+        SoftLandingLaunchConfig memory launchConfig =
+            _launchConfig(CurrencyLibrary.ADDRESS_ZERO, Currency.wrap(address(projectToken)));
+        bytes32 baseline = hookFactory.initCodeHash(manager, address(0), config, launchConfig);
+
+        launchConfig.currency0 = Currency.wrap(address(1));
+        assertNotEq(hookFactory.initCodeHash(manager, address(0), config, launchConfig), baseline);
+        launchConfig = _launchConfig(CurrencyLibrary.ADDRESS_ZERO, Currency.wrap(address(projectToken)));
+
+        launchConfig.currency1 = Currency.wrap(address(2));
+        assertNotEq(hookFactory.initCodeHash(manager, address(0), config, launchConfig), baseline);
+        launchConfig = _launchConfig(CurrencyLibrary.ADDRESS_ZERO, Currency.wrap(address(projectToken)));
+
+        launchConfig.tickSpacing = 10;
+        assertNotEq(hookFactory.initCodeHash(manager, address(0), config, launchConfig), baseline);
+        launchConfig = _launchConfig(CurrencyLibrary.ADDRESS_ZERO, Currency.wrap(address(projectToken)));
+
+        launchConfig.sqrtPriceX96 = TickMath.getSqrtPriceAtTick(1);
+        assertNotEq(hookFactory.initCodeHash(manager, address(0), config, launchConfig), baseline);
+    }
+
+    function testLaunchIdentityMismatchRevertsBeforeDeployment() public {
+        SoftLandingLaunchConfig memory launchConfig =
+            _launchConfig(CurrencyLibrary.ADDRESS_ZERO, Currency.wrap(address(projectToken)));
+        (address expectedHook, bytes32 salt) = _mineHook(address(0), config, launchConfig);
+        launchConfig.sqrtPriceX96 = TickMath.getSqrtPriceAtTick(1);
+        address actualHook = hookFactory.predictHookAddress(salt, manager, address(0), config, launchConfig);
+
+        assertNotEq(actualHook, expectedHook);
+        vm.expectRevert(
+            abi.encodeWithSelector(SoftLandingHookFactory.LaunchIdentityMismatch.selector, expectedHook, actualHook)
+        );
+        hookFactory.deployAndInitialize(salt, expectedHook, manager, address(0), config, launchConfig);
     }
 
     function testFuzzGrossFeePolicy(uint96 rawGross) public view {
@@ -340,15 +384,32 @@ contract SoftLandingHookTest is Deployers {
         address quoteCurrency,
         SoftLandingConfig memory config_
     ) private returns (SoftLandingHook deployed, PoolKey memory key, int24 tick) {
-        (, bytes32 salt) = HookMiner.find(
+        SoftLandingLaunchConfig memory launchConfig = _launchConfig(currency0, currency1);
+        (address expectedHook, bytes32 salt) = _mineHook(quoteCurrency, config_, launchConfig);
+        return hookFactory.deployAndInitialize(salt, expectedHook, manager, quoteCurrency, config_, launchConfig);
+    }
+
+    function _mineHook(
+        address quoteCurrency,
+        SoftLandingConfig memory config_,
+        SoftLandingLaunchConfig memory launchConfig
+    ) private view returns (address expectedHook, bytes32 salt) {
+        return HookMiner.find(
             address(hookFactory),
             hookFactory.REQUIRED_HOOK_FLAGS(),
             type(SoftLandingHook).creationCode,
-            abi.encode(manager, address(hookFactory), quoteCurrency, config_)
+            abi.encode(manager, address(hookFactory), quoteCurrency, config_, launchConfig)
         );
-        return hookFactory.deployAndInitialize(
-            salt, manager, currency0, currency1, TICK_SPACING, quoteCurrency, config_, SQRT_PRICE_1_1
-        );
+    }
+
+    function _launchConfig(Currency currency0, Currency currency1)
+        private
+        pure
+        returns (SoftLandingLaunchConfig memory)
+    {
+        return SoftLandingLaunchConfig({
+            currency0: currency0, currency1: currency1, tickSpacing: TICK_SPACING, sqrtPriceX96: SQRT_PRICE_1_1
+        });
     }
 
     function _addNativeQuoteLiquidity(PoolKey memory key, uint256 amount) private {

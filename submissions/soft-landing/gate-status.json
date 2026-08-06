@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "attestation": "builder-declared-untrusted",
   "standardVersion": "1.3.0",
-  "submissionHash": "sha256:d5d625a3d75a6509d18782c02a53b611b29c4f0a766ee3e238269d3eb643191f",
+  "submissionHash": "sha256:ecef0c065af9962a68d4e2fe180492f773f2d062e49aaa08f11bafcd9bcdb0b6",
   "validatorSha256": "sha256:d3b4db147fbb955d0ecdff0d5d3a55d25a55a38bb72b33efe535d9c80c286318",
   "schemaSha256": "sha256:b3a67753b286a35a49d88a85e1bdaec50f19d86b241145901e2dd24327fd515a",
   "deploymentSnapshotSha256": "sha256:35e36a2837a70688104cd6a4aae3da4e1401429226c8ca15d036db4cf2195d2c",
   "officialDeploymentReferenceSha256": "sha256:ef7e12bf1312edf374749bfeb18ac41cb83623856fbfd39892606579b7119fd6",
   "policyBundleSha256": "sha256:1c623966ae90b671ff423329c14f1dbfb0061a80f6cd33b25e6671ed98c61c3d",
-  "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce",
+  "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6",
   "gates": [
     {
       "id": "after-swap-return-delta-invariants",
@@ -22,8 +22,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "afterSwapReturnDelta is enabled."
@@ -40,8 +40,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "beforeSwapReturnDelta is enabled."
@@ -58,8 +58,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Every hook must authenticate PoolManager and match its mined address permissions."
@@ -76,8 +76,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Every enabled callback must return the exact selector and ABI length and account for noSelfCall suppression."
@@ -94,8 +94,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The hook uses custom accounting."
@@ -112,8 +112,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The model has external dependencies."
@@ -130,8 +130,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The dynamic LP fee depends on a measured input."
@@ -148,8 +148,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The pool uses a dynamic LP fee."
@@ -166,8 +166,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The model uses PoolManager ERC-6909 claims."
@@ -184,8 +184,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Public model state must be reproducible from events and confirmed reads."
@@ -202,8 +202,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The declared model makes external calls."
@@ -220,8 +220,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The model holds or depends on liquidity outside the canonical pool accounting."
@@ -238,8 +238,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The model charges or changes fees during swaps."
@@ -256,8 +256,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Every prototype must pass its declared language build and size checks without unexplained warnings."
@@ -280,8 +280,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Every declared package requires attributable verification that its exact version and sha512 integrity match the installed lock entry and the dependency closure used by the reviewed build."
@@ -298,8 +298,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The prototype must prove the minimum, non-additive split, quote-side basis and owner-only claim path at executable boundaries."
@@ -316,8 +316,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "A project surface holds assets, positions, claims, keys or withdrawal authority."
@@ -334,8 +334,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "A project surface calls another contract, API, provider or service."
@@ -352,8 +352,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "A project surface can move, award, claim, fee or settle value."
@@ -370,8 +370,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "The hook holds balances, claims or custom-accounting liabilities."
@@ -388,8 +388,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Core Swap events do not fully describe the custom leg."
@@ -406,8 +406,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Declared Solidity source needs static findings with dispositions."
@@ -424,8 +424,8 @@
           "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.3.0",
-          "commit": "da1a49a6d96ac1794e23bd05d99785af67922bc3",
-          "reviewTargetHash": "sha256:f873dff21b42669f277754c057187f3d8c463a77e094c463ff02cb281a9264ce"
+          "commit": "fee814047c3f20198a8025063cf799155efd2be3",
+          "reviewTargetHash": "sha256:00dcb0395880a4943c796b37b4b4ffb6b8acee9490d4bb7b410aaa5255a659a6"
         }
       ],
       "note": "Declared Solidity behavior needs lifecycle and property evidence."
