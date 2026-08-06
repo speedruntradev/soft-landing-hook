@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "standardVersion": "1.5.0",
-  "submissionHash": "sha256:49396e8a27f60bd0b7cf6b0c28a3abebf5a86badf57cfafc8e2925362645a36e",
+  "submissionHash": "sha256:545d82f919b4d0361f000438dbae5d6cab7d68ed54f4087436a7bb3c96635685",
   "closureMethod": "declared-bytes-and-resolved-solidity-and-javascript-imports-v10",
   "closure": {
     "status": "complete",
@@ -1870,6 +1870,12 @@
       "sha256": "7ab5cbba684cc686540ee8d89ab9f6fd9ffeeb769c032e6b42e466126c447e13"
     },
     {
+      "path": "spec/soft-landing.json",
+      "kind": "project-surface-schema:soft-landing-hook",
+      "bytes": 3482,
+      "sha256": "2afb62223a26f383ef3471a7183c68482c36ac499b252b9acd5df46c10e42853"
+    },
+    {
       "path": "src/SoftLandingHook.sol",
       "kind": "source-entry",
       "bytes": 25817,
@@ -1896,8 +1902,8 @@
     {
       "path": "submissions/soft-landing/PROPOSAL.md",
       "kind": "package:PROPOSAL.md",
-      "bytes": 9138,
-      "sha256": "c05b22aa4a27b475bc7555cc91fbe35fa772a381c1ac7f212b7b61e11c2c1009"
+      "bytes": 9194,
+      "sha256": "c4ded5a1553a1b70984878bf6fbdfe4aebf256e238bf1c0a3d48bff61f07ee0e"
     },
     {
       "path": "submissions/soft-landing/TEST_PLAN.md",
@@ -1915,7 +1921,7 @@
       "path": "submissions/soft-landing/compatibility-report.json",
       "kind": "package:compatibility-report.json",
       "bytes": 18159,
-      "sha256": "0bae8a076dd5c9ce87e2b683690e9fcc2d5f5ee6d422a9cfc28f711760d41e80"
+      "sha256": "31e45a6147ba01a58e0123eb974a4d6ddbebae879ace15259918eba6e905ec22"
     },
     {
       "path": "submissions/soft-landing/dependency-lock.json",
@@ -1932,8 +1938,8 @@
     {
       "path": "submissions/soft-landing/submission.json",
       "kind": "package:submission.json",
-      "bytes": 80671,
-      "sha256": "f9c806438f0319676e00c3f58083183270c075c15a375ba06fda5c56b5730f15"
+      "bytes": 80721,
+      "sha256": "2ae92652afacd047811b630fb40bdb499e73a47fa8501982949b608c6fbfaa9d"
     },
     {
       "path": "test/helpers/MockToken.sol",
@@ -5054,5 +5060,5 @@
     }
   ],
   "javascriptImportResolutions": [],
-  "reviewTargetHash": "sha256:d52c7a56a90e2af929e688af0042f6e70312279d80f8aa9f0d0e44055af48ea0"
+  "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
 }

@@ -882,6 +882,7 @@ surface.valueFlowRefs = ["core-swap", "programmable-volume-fee", "programmable-f
 surface.assetRefs = ["eth", "launched-token"];
 surface.sourcePaths = SOURCE_PATHS.slice(0, 3);
 surface.testPaths = TEST_PATHS;
+surface.schemaPaths = ["spec/soft-landing.json"];
 surface.evidencePaths = EVIDENCE_PATHS;
 surface.exposure = {
   movesValue: true,
@@ -1039,7 +1040,7 @@ submission.implementation = {
   sourcePaths: SOURCE_PATHS,
   testPaths: TEST_PATHS,
   compilerBuildInfoPaths: buildInfoFiles,
-  specificationPath: "MECHANISM.md",
+  specificationPath: "spec/soft-landing.json",
   testEvidencePath: "EVIDENCE.md",
   dependencyLockPath: "submissions/soft-landing/dependency-lock.json",
   gateStatusPath: "submissions/soft-landing/gate-status.json",

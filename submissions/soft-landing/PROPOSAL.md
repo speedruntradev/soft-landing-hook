@@ -12,7 +12,7 @@ This proposal, `submission.json`, `MECHANISM.md`, `SECURITY.md`, and the tests d
 
 `hook.used` is true. v4 is necessary because the mechanism must atomically choose a directional LP-fee override before each swap, observe the executed result after it, and collect the mandatory quote-volume fee with return deltas. A router-only design could be bypassed and could not guarantee one canonical-pool accounting path. The policy is integrated into the single custom hook rather than a second hook.
 
-The source is `src/SoftLandingHook.sol`, controller math is `src/lib/FlowFeeMath.sol`, and atomic CREATE2 deployment is `src/SoftLandingHookFactory.sol`. The repository also contains a local, non-transactional mechanism demo; there is no production app, API, service, keeper, oracle, or project indexer.
+The source is `src/SoftLandingHook.sol`, controller math is `src/lib/FlowFeeMath.sol`, atomic CREATE2 deployment is `src/SoftLandingHookFactory.sol`, and the autonomous launch plan is `spec/soft-landing.json`. The repository also contains a local, non-transactional mechanism demo; there is no production app, API, service, keeper, oracle, or project indexer.
 
 ## Design card
 

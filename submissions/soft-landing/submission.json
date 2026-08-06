@@ -1055,7 +1055,9 @@
         "test/integration/SoftLandingHook.t.sol",
         "test/invariant/ControllerInvariant.t.sol"
       ],
-      "schemaPaths": [],
+      "schemaPaths": [
+        "spec/soft-landing.json"
+      ],
       "evidencePaths": [
         "MECHANISM.md",
         "SECURITY.md",
@@ -1833,7 +1835,7 @@
     "compilerBuildInfoPaths": [
       "evidence/build-info/6e68ac78ff445c07.json"
     ],
-    "specificationPath": "MECHANISM.md",
+    "specificationPath": "spec/soft-landing.json",
     "testEvidencePath": "EVIDENCE.md",
     "dependencyLockPath": "submissions/soft-landing/dependency-lock.json",
     "gateStatusPath": "submissions/soft-landing/gate-status.json",
