@@ -22,7 +22,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -40,7 +40,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -58,7 +58,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -76,7 +76,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -94,7 +94,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -112,7 +112,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -130,7 +130,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -148,7 +148,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -166,7 +166,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -184,7 +184,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -202,7 +202,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -220,7 +220,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -238,7 +238,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -256,7 +256,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -280,7 +280,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -310,7 +310,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -328,7 +328,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -346,7 +346,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -364,7 +364,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -382,7 +382,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -400,7 +400,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -424,7 +424,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
@@ -442,7 +442,7 @@
           "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "commit": "089c881bcdf9847066973b7c8e969ae423a92721",
           "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
