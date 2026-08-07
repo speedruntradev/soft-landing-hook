@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "standardVersion": "1.5.0",
-  "submissionHash": "sha256:545d82f919b4d0361f000438dbae5d6cab7d68ed54f4087436a7bb3c96635685",
+  "submissionHash": "sha256:0b94d3982b7ed9d118e949c51d57133c01e6e474d833e8f9e29a5bb442775850",
   "closureMethod": "declared-bytes-and-resolved-solidity-and-javascript-imports-v10",
   "closure": {
     "status": "complete",
@@ -10,27 +10,27 @@
   "files": [
     {
       "path": "EVIDENCE.md",
-      "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 2511,
-      "sha256": "ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679"
+      "kind": "project-surface-evidence:soft-landing-contract-system",
+      "bytes": 3186,
+      "sha256": "b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7"
     },
     {
       "path": "MECHANISM.md",
-      "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 6947,
-      "sha256": "ce2b5e65fb26f651dc92082f9f9b00aa9c9fb75396e6b3b336e48548aaa53652"
+      "kind": "project-surface-evidence:soft-landing-contract-system",
+      "bytes": 8671,
+      "sha256": "c05b1a774135bb1c74189c45afde7b1f1cd0115c46b7fe8726123276fe8a5522"
     },
     {
       "path": "README.md",
-      "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 2584,
-      "sha256": "ba877ce7313e5d532a01d2c6bfbc6498ce6d7646b9a8aaaff3a095d1d31cbd1f"
+      "kind": "project-surface-evidence:soft-landing-contract-system",
+      "bytes": 3601,
+      "sha256": "182928c244db9deda8986a494da3f1990bf304d2a737a39ababdaa6884b3d3ac"
     },
     {
       "path": "SECURITY.md",
-      "kind": "project-surface-evidence:soft-landing-hook",
-      "bytes": 3988,
-      "sha256": "b765898bed470a98f7f8869f596b574c7c4f2696ab0adac5f770df5099273f9e"
+      "kind": "project-surface-evidence:soft-landing-contract-system",
+      "bytes": 5118,
+      "sha256": "06dfd4c57cbad9a602714ee50cf46756de4ee8d13e318be95b16fd60b60c390a"
     },
     {
       "path": "foundry.toml",
@@ -1841,6 +1841,23 @@
       }
     },
     {
+      "path": "node_modules/@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
+      "kind": "solidity-package-dependency-import",
+      "bytes": 3774,
+      "sha256": "dbfbef7aed94a6a56885124f0802b42adf7ee7bdd658f11fed40ffbb93fe6ba5",
+      "sourceClass": "external-package-local",
+      "packageDependency": {
+        "packageName": "@uniswap/v4-periphery",
+        "version": "1.0.3",
+        "integrity": "sha512-JxLL0Djv9XcMvI2PatEnWrCrxuEaYNVhHxstndBOP+aJfh1XLg5ec8SDZ0xyoVfg2ElJTvuKpBgnu90bNValsg==",
+        "repository": "https://github.com/Uniswap/v4-periphery",
+        "revision": "60cd93803ac2b7fa65fd6cd351fd5fd4cc8c9db5",
+        "evidenceState": "builder-declared-local-package-bytes",
+        "integrityVerified": false,
+        "centralSourceVerified": false
+      }
+    },
+    {
       "path": "node_modules/@uniswap/v4-periphery/src/utils/HookMiner.sol",
       "kind": "solidity-package-dependency-import",
       "bytes": 3180,
@@ -1871,9 +1888,9 @@
     },
     {
       "path": "spec/soft-landing.json",
-      "kind": "project-surface-schema:soft-landing-hook",
-      "bytes": 3482,
-      "sha256": "2afb62223a26f383ef3471a7183c68482c36ac499b252b9acd5df46c10e42853"
+      "kind": "project-surface-schema:soft-landing-contract-system",
+      "bytes": 15149,
+      "sha256": "fa2438f10ade31002f2fa73feee66b3bde3e1b23d56343e40be997f1b9a2de58"
     },
     {
       "path": "src/SoftLandingHook.sol",
@@ -1888,6 +1905,18 @@
       "sha256": "50ed88cf1550bdbb4e7fc1d00513be0813db51ea4dcaad0c555684f465d7c33a"
     },
     {
+      "path": "src/SoftLandingLaunch.sol",
+      "kind": "source-entry",
+      "bytes": 16911,
+      "sha256": "9d233137a4e072373da327c5e676bd1b1dadcc1bfabf19acad074df0d66b9d43"
+    },
+    {
+      "path": "src/SoftLandingToken.sol",
+      "kind": "source-entry",
+      "bytes": 1777,
+      "sha256": "c29c8a8c3865a0fa4342fb1274fe581fc770fb854bd3797708a58252622d50bf"
+    },
+    {
       "path": "src/lib/FlowFeeMath.sol",
       "kind": "source-entry",
       "bytes": 2197,
@@ -1896,32 +1925,32 @@
     {
       "path": "submissions/soft-landing/EVIDENCE.md",
       "kind": "package:EVIDENCE.md",
-      "bytes": 5407,
-      "sha256": "bd8d5c785668074f0b62900b898b9d157dfabb89bec1b66deb6ed69df50c35dd"
+      "bytes": 7756,
+      "sha256": "9661e910de0a9d2242327f56a306adab32e854e94c826aed875f45b56173e034"
     },
     {
       "path": "submissions/soft-landing/PROPOSAL.md",
       "kind": "package:PROPOSAL.md",
-      "bytes": 9194,
-      "sha256": "c4ded5a1553a1b70984878bf6fbdfe4aebf256e238bf1c0a3d48bff61f07ee0e"
+      "bytes": 9695,
+      "sha256": "27c3834e42e67b03dd8c2b3630ee466b8fc5557c62a9d6ca4bba9e451991042b"
     },
     {
       "path": "submissions/soft-landing/TEST_PLAN.md",
       "kind": "package:TEST_PLAN.md",
-      "bytes": 4944,
-      "sha256": "73187aa363ce6fe5904ebd023785075ab282154b5ebe60005525a32edde70174"
+      "bytes": 6235,
+      "sha256": "7e07eccee5164d264b210c21326d51395fb26d8fd85205e7086e4c0d4adef811"
     },
     {
       "path": "submissions/soft-landing/THREAT_MODEL.md",
       "kind": "package:THREAT_MODEL.md",
-      "bytes": 7724,
-      "sha256": "ef61e6d835293c71cc0b16660e607a01f9f01351a5139bbe16e3376c567efca5"
+      "bytes": 9304,
+      "sha256": "4a17367ed5381edfa6aa69ce29253ccfb3faec8e371f9241cde89996c88e09c6"
     },
     {
       "path": "submissions/soft-landing/compatibility-report.json",
       "kind": "package:compatibility-report.json",
-      "bytes": 18159,
-      "sha256": "31e45a6147ba01a58e0123eb974a4d6ddbebae879ace15259918eba6e905ec22"
+      "bytes": 20391,
+      "sha256": "505210fb3662d82008ddef2a866201d1e9fd9dfeaf2aa052619f65e6f52e32bc"
     },
     {
       "path": "submissions/soft-landing/dependency-lock.json",
@@ -1938,8 +1967,8 @@
     {
       "path": "submissions/soft-landing/submission.json",
       "kind": "package:submission.json",
-      "bytes": 80721,
-      "sha256": "2ae92652afacd047811b630fb40bdb499e73a47fa8501982949b608c6fbfaa9d"
+      "bytes": 88930,
+      "sha256": "d252c95c3bd0adb6c45b6b627094036e6e620f6882afe06830e3e5f7fe253745"
     },
     {
       "path": "test/helpers/MockToken.sol",
@@ -1950,8 +1979,14 @@
     {
       "path": "test/integration/SoftLandingHook.t.sol",
       "kind": "test-entry",
-      "bytes": 20925,
-      "sha256": "87d0ca26a60fec6450c0b6f6bdf0d502513fa74d461724a3791efc065ad4371b"
+      "bytes": 21102,
+      "sha256": "b862188723cd02736a4c9d6409af3d949e444feb82d5e07e3fa166b8450fe2ad"
+    },
+    {
+      "path": "test/integration/SoftLandingLaunch.t.sol",
+      "kind": "test-entry",
+      "bytes": 12317,
+      "sha256": "7ea6a4f0edb8efb108a8789b9e0bb18d9a081f465883c463a35b6e5996d5852f"
     },
     {
       "path": "test/invariant/ControllerInvariant.t.sol",
@@ -1980,9 +2015,12 @@
     "@uniswap/v4-core/src/interfaces/IPoolManager.sol",
     "@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol",
     "@uniswap/v4-core/src/libraries/CustomRevert.sol",
+    "@uniswap/v4-core/src/libraries/FixedPoint96.sol",
     "@uniswap/v4-core/src/libraries/FullMath.sol",
     "@uniswap/v4-core/src/libraries/Hooks.sol",
     "@uniswap/v4-core/src/libraries/LPFeeLibrary.sol",
+    "@uniswap/v4-core/src/libraries/SafeCast.sol",
+    "@uniswap/v4-core/src/libraries/StateLibrary.sol",
     "@uniswap/v4-core/src/libraries/TickMath.sol",
     "@uniswap/v4-core/src/test/PoolSwapTest.sol",
     "@uniswap/v4-core/src/types/BalanceDelta.sol",
@@ -1992,6 +2030,7 @@
     "@uniswap/v4-core/src/types/PoolKey.sol",
     "@uniswap/v4-core/src/types/PoolOperation.sol",
     "@uniswap/v4-core/test/utils/Deployers.sol",
+    "@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
     "@uniswap/v4-periphery/src/utils/HookMiner.sol",
     "forge-std/Test.sol",
     "solmate/src/auth/Owned.sol",
@@ -4484,6 +4523,15 @@
     },
     {
       "specifier": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "importer": "src/SoftLandingToken.sol",
+      "remappingPrefix": "@openzeppelin/contracts/",
+      "remappingTarget": "node_modules/@openzeppelin/contracts/",
+      "resolvedPath": "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/contracts"
+    },
+    {
+      "specifier": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "importer": "test/helpers/MockToken.sol",
       "remappingPrefix": "@openzeppelin/contracts/",
       "remappingTarget": "node_modules/@openzeppelin/contracts/",
@@ -4494,6 +4542,15 @@
     {
       "specifier": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "importer": "node_modules/@openzeppelin/uniswap-hooks/src/utils/CurrencySettler.sol",
+      "remappingPrefix": "@openzeppelin/contracts/",
+      "remappingTarget": "node_modules/@openzeppelin/contracts/",
+      "resolvedPath": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/contracts"
+    },
+    {
+      "specifier": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "importer": "src/SoftLandingLaunch.sol",
       "remappingPrefix": "@openzeppelin/contracts/",
       "remappingTarget": "node_modules/@openzeppelin/contracts/",
       "resolvedPath": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
@@ -4519,6 +4576,15 @@
       "packageName": "@openzeppelin/contracts"
     },
     {
+      "specifier": "@openzeppelin/contracts/utils/Create2.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@openzeppelin/contracts/",
+      "remappingTarget": "node_modules/@openzeppelin/contracts/",
+      "resolvedPath": "node_modules/@openzeppelin/contracts/utils/Create2.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/contracts"
+    },
+    {
       "specifier": "@openzeppelin/contracts/utils/ReentrancyGuardTransient.sol",
       "importer": "src/SoftLandingHook.sol",
       "remappingPrefix": "@openzeppelin/contracts/",
@@ -4528,8 +4594,26 @@
       "packageName": "@openzeppelin/contracts"
     },
     {
+      "specifier": "@openzeppelin/contracts/utils/ReentrancyGuardTransient.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@openzeppelin/contracts/",
+      "remappingTarget": "node_modules/@openzeppelin/contracts/",
+      "resolvedPath": "node_modules/@openzeppelin/contracts/utils/ReentrancyGuardTransient.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/contracts"
+    },
+    {
       "specifier": "@openzeppelin/contracts/utils/math/SafeCast.sol",
       "importer": "src/SoftLandingHook.sol",
+      "remappingPrefix": "@openzeppelin/contracts/",
+      "remappingTarget": "node_modules/@openzeppelin/contracts/",
+      "resolvedPath": "node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/contracts"
+    },
+    {
+      "specifier": "@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "importer": "src/SoftLandingLaunch.sol",
       "remappingPrefix": "@openzeppelin/contracts/",
       "remappingTarget": "node_modules/@openzeppelin/contracts/",
       "resolvedPath": "node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol",
@@ -4548,6 +4632,15 @@
     {
       "specifier": "@openzeppelin/contracts/utils/math/SafeCast.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@openzeppelin/contracts/",
+      "remappingTarget": "node_modules/@openzeppelin/contracts/",
+      "resolvedPath": "node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/contracts"
+    },
+    {
+      "specifier": "@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@openzeppelin/contracts/",
       "remappingTarget": "node_modules/@openzeppelin/contracts/",
       "resolvedPath": "node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol",
@@ -4591,6 +4684,15 @@
       "packageName": "@openzeppelin/uniswap-hooks"
     },
     {
+      "specifier": "@openzeppelin/uniswap-hooks/src/utils/CurrencySettler.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@openzeppelin/uniswap-hooks/",
+      "remappingTarget": "node_modules/@openzeppelin/uniswap-hooks/",
+      "resolvedPath": "node_modules/@openzeppelin/uniswap-hooks/src/utils/CurrencySettler.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@openzeppelin/uniswap-hooks"
+    },
+    {
       "specifier": "@uniswap/v4-core/src/interfaces/IHooks.sol",
       "importer": "node_modules/@openzeppelin/uniswap-hooks/src/base/BaseHook.sol",
       "remappingPrefix": "@uniswap/v4-core/",
@@ -4611,6 +4713,15 @@
     {
       "specifier": "@uniswap/v4-core/src/interfaces/IHooks.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/interfaces/IHooks.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/interfaces/IHooks.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/interfaces/IHooks.sol",
@@ -4654,8 +4765,35 @@
       "packageName": "@uniswap/v4-core"
     },
     {
+      "specifier": "@uniswap/v4-core/src/interfaces/IPoolManager.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/interfaces/IPoolManager.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/interfaces/IPoolManager.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/interfaces/IPoolManager.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
       "specifier": "@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol",
       "importer": "src/SoftLandingHook.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol",
+      "importer": "src/SoftLandingLaunch.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol",
@@ -4668,6 +4806,24 @@
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/CustomRevert.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/libraries/FixedPoint96.sol",
+      "importer": "node_modules/@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/FixedPoint96.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/libraries/FullMath.sol",
+      "importer": "node_modules/@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/FullMath.sol",
       "kind": "solidity-package-dependency-import",
       "packageName": "@uniswap/v4-core"
     },
@@ -4762,6 +4918,24 @@
       "packageName": "@uniswap/v4-core"
     },
     {
+      "specifier": "@uniswap/v4-core/src/libraries/SafeCast.sol",
+      "importer": "node_modules/@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/SafeCast.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/libraries/StateLibrary.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/StateLibrary.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
       "specifier": "@uniswap/v4-core/src/libraries/TickMath.sol",
       "importer": "src/SoftLandingHook.sol",
       "remappingPrefix": "@uniswap/v4-core/",
@@ -4772,7 +4946,25 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/libraries/TickMath.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/TickMath.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/libraries/TickMath.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/TickMath.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/libraries/TickMath.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/libraries/TickMath.sol",
@@ -4782,6 +4974,15 @@
     {
       "specifier": "@uniswap/v4-core/src/test/PoolSwapTest.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/test/PoolSwapTest.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/test/PoolSwapTest.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/test/PoolSwapTest.sol",
@@ -4808,7 +5009,25 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/types/BalanceDelta.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/BalanceDelta.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/BalanceDelta.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/BalanceDelta.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/BalanceDelta.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/types/BalanceDelta.sol",
@@ -4862,7 +5081,25 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/types/Currency.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/Currency.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/Currency.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/Currency.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/Currency.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/types/Currency.sol",
@@ -4889,7 +5126,25 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/types/PoolId.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolId.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/PoolId.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolId.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/PoolId.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolId.sol",
@@ -4925,7 +5180,25 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/types/PoolKey.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolKey.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/PoolKey.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolKey.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/PoolKey.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolKey.sol",
@@ -4952,7 +5225,25 @@
     },
     {
       "specifier": "@uniswap/v4-core/src/types/PoolOperation.sol",
+      "importer": "src/SoftLandingLaunch.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolOperation.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/PoolOperation.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolOperation.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-core/src/types/PoolOperation.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-core/",
       "remappingTarget": "node_modules/@uniswap/v4-core/",
       "resolvedPath": "node_modules/@uniswap/v4-core/src/types/PoolOperation.sol",
@@ -4969,8 +5260,35 @@
       "packageName": "@uniswap/v4-core"
     },
     {
+      "specifier": "@uniswap/v4-core/test/utils/Deployers.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
+      "remappingPrefix": "@uniswap/v4-core/",
+      "remappingTarget": "node_modules/@uniswap/v4-core/",
+      "resolvedPath": "node_modules/@uniswap/v4-core/test/utils/Deployers.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-core"
+    },
+    {
+      "specifier": "@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
+      "remappingPrefix": "@uniswap/v4-periphery/",
+      "remappingTarget": "node_modules/@uniswap/v4-periphery/",
+      "resolvedPath": "node_modules/@uniswap/v4-periphery/src/libraries/LiquidityAmounts.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-periphery"
+    },
+    {
       "specifier": "@uniswap/v4-periphery/src/utils/HookMiner.sol",
       "importer": "test/integration/SoftLandingHook.t.sol",
+      "remappingPrefix": "@uniswap/v4-periphery/",
+      "remappingTarget": "node_modules/@uniswap/v4-periphery/",
+      "resolvedPath": "node_modules/@uniswap/v4-periphery/src/utils/HookMiner.sol",
+      "kind": "solidity-package-dependency-import",
+      "packageName": "@uniswap/v4-periphery"
+    },
+    {
+      "specifier": "@uniswap/v4-periphery/src/utils/HookMiner.sol",
+      "importer": "test/integration/SoftLandingLaunch.t.sol",
       "remappingPrefix": "@uniswap/v4-periphery/",
       "remappingTarget": "node_modules/@uniswap/v4-periphery/",
       "resolvedPath": "node_modules/@uniswap/v4-periphery/src/utils/HookMiner.sol",
@@ -5060,5 +5378,5 @@
     }
   ],
   "javascriptImportResolutions": [],
-  "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+  "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
 }

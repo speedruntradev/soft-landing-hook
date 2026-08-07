@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "attestation": "builder-declared-untrusted",
   "standardVersion": "1.5.0",
-  "submissionHash": "sha256:545d82f919b4d0361f000438dbae5d6cab7d68ed54f4087436a7bb3c96635685",
+  "submissionHash": "sha256:0b94d3982b7ed9d118e949c51d57133c01e6e474d833e8f9e29a5bb442775850",
   "validatorSha256": "sha256:2b9befc32be4b3a8267c9c9c4fe8cb36dcc53aef518f7c8216c0edda06732d61",
   "schemaSha256": "sha256:67e839128136fbffa8d9d6551a75c1988e55a3a74a0827359826e1449201cc45",
   "deploymentSnapshotSha256": "sha256:35e36a2837a70688104cd6a4aae3da4e1401429226c8ca15d036db4cf2195d2c",
   "officialDeploymentReferenceSha256": "sha256:ef7e12bf1312edf374749bfeb18ac41cb83623856fbfd39892606579b7119fd6",
-  "policyBundleSha256": "sha256:1e6fb7abf912551a81ad045a1147da3f978c66b9c4ab1ee074e7ed09d07add61",
-  "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48",
+  "policyBundleSha256": "sha256:30db39a2059cbb3755eb9f04eb0ea8e2e0256e0243045f1e37a955dbb173443f",
+  "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed",
   "gates": [
     {
       "id": "after-swap-return-delta-invariants",
@@ -19,11 +19,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate after-swap-return-delta-invariants; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "afterSwapReturnDelta is enabled."
@@ -37,11 +37,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate before-swap-delta-four-quadrant-proof; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "beforeSwapReturnDelta is enabled."
@@ -55,11 +55,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate callback-authentication-and-permission-mask; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Every hook must authenticate PoolManager and match its mined address permissions."
@@ -73,11 +73,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate callback-selector-return-length-and-self-call-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Every enabled callback must return the exact selector and ABI length and account for noSelfCall suppression."
@@ -91,11 +91,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate delta-conservation-invariants; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The hook uses custom accounting."
@@ -109,11 +109,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate dependency-failure-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The model has external dependencies."
@@ -127,11 +127,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate dynamic-fee-manipulation-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The dynamic LP fee depends on a measured input."
@@ -145,11 +145,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate dynamic-fee-properties; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The pool uses a dynamic LP fee."
@@ -163,11 +163,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate erc6909-liability-solvency-invariants; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The model uses PoolManager ERC-6909 claims."
@@ -179,13 +179,13 @@
         {
           "gateId": "event-reorg-backfill-freshness-tests",
           "result": "passed",
-          "scope": "Repository inspection confirms no project indexer is implemented; reorg, backfill, and freshness stay product-owned and not applicable to this contract-only prototype.",
+          "scope": "Repository inspection confirms no project indexer is implemented. The local contract-only scope is complete through deterministic events plus confirmed reads; production reorg, backfill, reconciliation, and freshness remain platform-owned and are not claimed.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Public model state must be reproducible from events and confirmed reads."
@@ -199,11 +199,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate external-call-reentrancy-and-failure-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The declared model makes external calls."
@@ -215,13 +215,13 @@
         {
           "gateId": "external-liquidity-solvency-and-exit-invariants",
           "result": "passed",
-          "scope": "Repository inspection and callback permissions confirm the hook takes no LP position or external-liquidity custody; ordinary PoolManager LP exit remains outside hook control.",
+          "scope": "The real-PoolManager launch suite checks exact launcher position ownership, active liquidity, supply conservation, inaccessible rounding dust, and the absence of any launcher removal, transfer, approval, rescue, sweep, or arbitrary-call path.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The model holds or depends on liquidity outside the canonical pool accounting."
@@ -235,11 +235,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate fee-four-quadrant-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The model charges or changes fees during swaps."
@@ -253,11 +253,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate format-build-size-warnings; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Every prototype must pass its declared language build and size checks without unexplained warnings."
@@ -266,7 +266,7 @@
       "id": "independent-security-review-one",
       "status": "planned",
       "evidence": [],
-      "note": "Repository tests and builder checks do not replace independent review of return-delta accounting and controller economics."
+      "note": "Platform-owned required gate, explicitly not passed: assign an attributable independent reviewer for launcher settlement, return-delta accounting, permanent custody, and controller economics."
     },
     {
       "id": "package-dependency-lock-and-closure-verification",
@@ -277,14 +277,26 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate package-dependency-lock-and-closure-verification; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Every declared package requires attributable verification that its exact version and sha512 integrity match the installed lock entry and the dependency closure used by the reviewed build."
+    },
+    {
+      "id": "pinned-mainnet-fork-lifecycle",
+      "status": "planned",
+      "evidence": [],
+      "note": "Platform-owned, not run: pin Ethereum block and runtime identities, then exercise launch, buy, sell, claim, and rollback against production dependencies."
+    },
+    {
+      "id": "production-router-v4planner-permit2-parity",
+      "status": "planned",
+      "evidence": [],
+      "note": "Platform-owned, not run: verify Universal Router, V4Planner, Permit2, V4Quoter, and StateView quote-to-receipt parity for the exact PoolKey."
     },
     {
       "id": "programmable-fee-formula-and-claim-tests",
@@ -295,11 +307,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate programmable-fee-formula-and-claim-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The prototype must prove the minimum, non-additive split, quote-side basis and owner-only claim path at executable boundaries."
@@ -311,13 +323,13 @@
         {
           "gateId": "project-custody-solvency-and-exit-tests",
           "result": "passed",
-          "scope": "Source and tests confirm project hook fee is zero and the project has no custody, claim, withdrawal, rescue, or exit authority.",
+          "scope": "The launcher permanently owns the initial position without a beneficiary or exit authority; separately, source and tests confirm the project hook fee is zero and no project claim, withdrawal, rescue, or mutable custody role exists.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "A project surface holds assets, positions, claims, keys or withdrawal authority."
@@ -331,11 +343,11 @@
           "result": "passed",
           "scope": "Source inspection confirms no project-controlled external dependency or call path; PoolManager authentication and atomic failure paths are covered separately.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "A project surface calls another contract, API, provider or service."
@@ -349,11 +361,11 @@
           "result": "passed",
           "scope": "Source and tests confirm the project share is zero; only the immutable Programmable liability and claim path exist.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "A project surface can move, award, claim, fee or settle value."
@@ -367,11 +379,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate reserve-reconstruction-and-solvency-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "The hook holds balances, claims or custom-accounting liabilities."
@@ -385,14 +397,20 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate return-delta-execution-event; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Core Swap events do not fully describe the custom leg."
+    },
+    {
+      "id": "slither-static-analysis",
+      "status": "planned",
+      "evidence": [],
+      "note": "Independent-review owned, not run: Slither is unavailable locally; record every finding and disposition against the exact source commit."
     },
     {
       "id": "static-analysis",
@@ -401,13 +419,13 @@
         {
           "gateId": "static-analysis",
           "result": "passed",
-          "scope": "Forge lint completed without a security diagnostic; this scope explicitly excludes Slither, which was unavailable and remains an independent-review action.",
+          "scope": "Forge lint completed with every reported cast checked or explicitly dispositioned and no remaining diagnostic. This local result excludes Slither, which is separately recorded as an open independent-review action.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Declared Solidity source needs static findings with dispositions."
@@ -421,11 +439,11 @@
           "result": "passed",
           "scope": "Local source, Foundry tests, deterministic simulation, and repository evidence cover contributor prototype gate unit-integration-fuzz-invariant-tests; this does not prove audit, deployment, routing, or availability.",
           "path": "EVIDENCE.md",
-          "sha256": "sha256:ceaa50d721f7b811cf9bdb8fba10bd9197fa0b42b520ba1d0f230f3e69f09679",
+          "sha256": "sha256:b009a04008b68cd5895825a3fcd25e19f7ffba96342acf5f9696ed754bf408c7",
           "command": "forge fmt --check && forge build --sizes && forge test -vvv && forge lint src test --severity high --severity med --severity low && node simulations/launch-traces.mjs",
           "toolVersion": "Forge 1.7.1 (4072e487); Node.js 24.19.0; programmable-v4-hook-builder standard 1.5.0",
-          "commit": "fe1220eb352caced9387333fbe7cb34725d6af84",
-          "reviewTargetHash": "sha256:1d5d994fc903d4085f57861b64a2bc8526a931780dd5013022708fab20381d48"
+          "commit": "042aafbc701527ef3ec911f4d3e617504c52fca9",
+          "reviewTargetHash": "sha256:c84d01c26d6652008ef86ccc92478fc59039383d793d66b2f3ab42080d00d3ed"
         }
       ],
       "note": "Declared Solidity behavior needs lifecycle and property evidence."

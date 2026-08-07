@@ -9,76 +9,8 @@ submission.$schema = "urn:programmable:v4-hook-submission:1.5.0";
 submission.standardVersion = "1.5.0";
 submission.builderTemplate = {
   schemaVersion: "1.0.0",
-  source: "catalog",
-  templateSelection: {
-    catalogDigest: "a7875ce817fafd7ca4e0655e2937fa5a49b602283aa846e804732d18e6c1478e",
-    selectionDigest: "3a0ef2146e48f619ec1d76cf056266e16dfe2252478643ea815e2a3034a0aac2",
-    starterId: "custom-hook",
-    requestedPackIds: ["dynamic-lp-fee", "programmable-volume-fee", "test-evidence-threat-model"],
-    defaultPackIds: [
-      "custom-hook-behavior",
-      "metadata-disclosures",
-      "programmable-volume-fee",
-      "test-evidence-threat-model",
-    ],
-    autoIncludedPackIds: [],
-    selectedPackIds: [
-      "custom-hook-behavior",
-      "dynamic-lp-fee",
-      "metadata-disclosures",
-      "programmable-volume-fee",
-      "test-evidence-threat-model",
-    ],
-    selectedCapabilityIds: [
-      "canonical-v4-pool",
-      "claimable-platform-fee",
-      "custom-hook-behavior",
-      "dynamic-lp-fee",
-      "evidence-plan",
-      "provider-disclosures",
-      "public-metadata",
-      "quote-side-volume-accounting",
-      "security-properties",
-    ],
-    customCapabilities: [
-      {
-        id: "directional-block-congestion-controller",
-        label: "Directional block congestion controller",
-        catalogStatus: "unlisted",
-        automaticDecision: "none",
-        reviewRoute: "architecture-review-required",
-        eligibilityEffect: "none",
-      },
-      {
-        id: "irreversible-launch-expiry",
-        label: "Irreversible launch expiry",
-        catalogStatus: "unlisted",
-        automaticDecision: "none",
-        reviewRoute: "architecture-review-required",
-        eligibilityEffect: "none",
-      },
-    ],
-    ownerProvidedLocalTags: ["launch-congestion", "soft-landing"],
-    localProjectTags: [
-      "canonical-v4-pool",
-      "claimable-platform-fee",
-      "custom-hook",
-      "custom-hook-behavior",
-      "directional-block-congestion-controller",
-      "dynamic-lp-fee",
-      "evidence-plan",
-      "irreversible-launch-expiry",
-      "launch-congestion",
-      "metadata-disclosures",
-      "programmable-volume-fee",
-      "provider-disclosures",
-      "public-metadata",
-      "quote-side-volume-accounting",
-      "security-properties",
-      "soft-landing",
-      "test-evidence-threat-model",
-    ],
-  },
+  source: "manual",
+  templateSelection: null,
 };
 submission.publicMetadata.localDiscoveryTags = ["launch-congestion", "soft-landing"];
 submission.programmableFee.policyVersion = "1.1.0";
@@ -104,6 +36,8 @@ submission.tokenMechanics = null;
 const SOURCE_PATHS = [
   "src/SoftLandingHook.sol",
   "src/SoftLandingHookFactory.sol",
+  "src/SoftLandingLaunch.sol",
+  "src/SoftLandingToken.sol",
   "src/lib/FlowFeeMath.sol",
   "simulations/launch-traces.mjs",
 ];
@@ -111,6 +45,7 @@ const TEST_PATHS = [
   "test/helpers/MockToken.sol",
   "test/unit/FlowFeeMath.t.sol",
   "test/integration/SoftLandingHook.t.sol",
+  "test/integration/SoftLandingLaunch.t.sol",
   "test/invariant/ControllerInvariant.t.sol",
 ];
 const EVIDENCE_PATHS = ["MECHANISM.md", "SECURITY.md", "EVIDENCE.md", "README.md"];
@@ -172,17 +107,20 @@ const lifecycle = submission.launchLifecycle;
 lifecycle.tokenCreation = {
   applicable: true,
   actor:
-    "The launch integration creates one standard fixed-supply 18-decimal token with 1,000,000,000 tokens and no remaining mint, pause, freeze, blacklist, confiscation, or transfer-tax authority.",
-  valueFlow: "The complete fixed supply is delivered to the external launcher for liquidity formation.",
-  custody: "The hook never mints or holds the initial token supply.",
-  failure: "Invalid token creation parameters revert before pool deployment; no partial supply is created.",
-  event: "The external token factory's creation event identifies the exact token address.",
+    "Any launch wallet may call SoftLandingLaunch.launch with a deadline-bound, exact CREATE2 token salt, expected token, immutable metadata, and fixed 1,000,000,000-token supply.",
+  valueFlow:
+    "SoftLandingToken mints the complete fixed supply once to SoftLandingLaunch; 999,999,999.999999999999974211 tokens enter the permanent one-sided position and only 25,789 wei-token rounding dust remains unreachable in the launcher.",
+  custody:
+    "SoftLandingLaunch permanently owns the position and retains only deterministic rounding dust with no withdrawal path; the hook never mints or holds launch supply.",
+  failure:
+    "Any name, symbol, supply, metadata, salt, expected-address, hook, pool, liquidity, initial-buy, settlement, or postcondition mismatch reverts the token deployment and every later launch step.",
+  event: "ERC20 Transfer from zero plus SoftLandingLaunched identify supply, token, creator, recipients, and launch hash.",
   notApplicableReason: null,
 };
 lifecycle.poolInitialization = {
   applicable: true,
   actor:
-    "Anyone may call the factory with immutable configuration, the expected hook address, and a mined salt; every PoolKey member and the initial sqrt price are committed to the CREATE2 identity before atomic deployment and initialization.",
+    "SoftLandingLaunch calls the permissionless hook factory with the exact mined hook salt, expected 0x20cc hook, immutable controller, canonical PoolManager, native quote, launched token, dynamic fee flag, tick spacing, and start price.",
   valueFlow: "No value moves; the hook records one canonical PoolId and the factory records a configuration hash.",
   custody: "No custody exists at initialization.",
   failure:
@@ -192,21 +130,26 @@ lifecycle.poolInitialization = {
 };
 lifecycle.liquidityFormation = {
   applicable: true,
-  actor: "The external launcher or LPs add standard concentrated liquidity through the PositionManager.",
-  valueFlow: "Quote and launched tokens enter standard v4 LP positions.",
-  custody: "LP positions own pool liquidity; the hook has no add/remove-liquidity callback or position custody.",
-  failure: "A liquidity failure reverts without changing controller or liability state.",
-  event: "Standard PoolManager liquidity events.",
+  actor:
+    "SoftLandingLaunch adds the exact one-sided token position and executes the paid native initial buy during one PoolManager unlock in the launch transaction.",
+  valueFlow:
+    "The full new-token budget supplies the position, the caller supplies exactly 0.001 native ETH for the initial buy, combined PoolManager deltas settle once, and only paid bought tokens reach the caller.",
+  custody:
+    "The direct v4 position is owned by SoftLandingLaunch under the declared ticks and position salt. The launcher exposes no liquidity-decrease, transfer, approval, rescue, sweep, arbitrary-call, or upgrade path, so principal and LP fees are permanently locked.",
+  failure:
+    "Wrong one-sided ticks, amount-bound failure, invalid liquidity or swap deltas, callback authentication failure, nonzero PoolManager deltas, or launcher token/native postcondition failure reverts token, hook, pool, and position atomically.",
+  event:
+    "PoolManager ModifyLiquidity plus SoftLandingPositionLocked and SoftLandingLaunched bind PoolId, owner, salt, ticks, liquidity, exact amounts, supply allocation, and launch hash.",
   notApplicableReason: null,
 };
 lifecycle.initialTransaction = {
   applicable: true,
-  actor: "The first successful canonical-pool swap starts the launch window inside beforeSwap.",
+  actor: "SoftLandingLaunch executes the exact native-input initial buy inside the same unlock after adding liquidity.",
   valueFlow:
-    "The swap pays the immutable initial directional LP fee and the 10 bps Programmable fee; executed gross quote is recorded after successful execution.",
+    "Exactly 0.001 ETH enters the canonical pool and the launch wallet receives at least the bound token output after the initial LP fee and 10 bps Programmable fee.",
   custody: "The hook begins holding quote-denominated PoolManager claims backing the Programmable liability.",
-  failure: "A reverted first swap rolls back startBlock, flow, and fee accrual atomically.",
-  event: "ControllerStarted, QuoteFeesAccrued, and QuoteFlowRecorded.",
+  failure: "A price-limit, minimum-output, settlement, or transfer failure rolls back token, hook, pool, liquidity, startBlock, flow, and fee accrual atomically.",
+  event: "ControllerStarted, QuoteFeesAccrued, QuoteFlowRecorded, and SoftLandingLaunched.",
   notApplicableReason: null,
 };
 lifecycle.trading = {
@@ -622,23 +565,38 @@ pfee.evidence.testPaths = ["test/integration/SoftLandingHook.t.sol"];
 for (const capability of Object.values(submission.capabilities)) capability.used = false;
 submission.capabilities.externalCalls = {
   used: true,
-  targets: ["Immutable Uniswap v4 PoolManager: initialize, take, unlock, settle"],
-  callSites: ["factory initialization", "beforeSwap", "afterSwap", "claimProgrammableFees", "unlockCallback"],
-  reentrancyPolicy: "BaseHook authenticates callbacks and transient reentrancy guards protect deployment registration and claims.",
+  targets: ["Immutable Uniswap v4 PoolManager: initialize, modifyLiquidity, swap, take, unlock, settle"],
+  callSites: [
+    "atomic token and hook launch",
+    "factory initialization",
+    "locked-liquidity unlock callback",
+    "beforeSwap",
+    "afterSwap",
+    "claimProgrammableFees",
+    "fee-claim unlockCallback",
+  ],
+  reentrancyPolicy:
+    "BaseHook authenticates callbacks; SoftLandingLaunch binds the exact active unlock-data hash and authenticates its immutable PoolManager; transient reentrancy guards protect launch, registration, and claims.",
   stateDriftPolicy: "Only canonical PoolManager and PoolId state is accepted; any revert is atomic.",
   returnValuePolicy: "Require exact callback selectors and an empty claim-unlock result.",
   failureAtomicity: "Any external-call failure reverts all state changes.",
 };
 submission.capabilities.externalLiquidity = {
   used: true,
-  custody: "The hook holds quote ERC-6909 claims in PoolManager and no LP position or external-protocol asset.",
-  ownership: "Every held claim unit backs the immutable Programmable owner liability.",
-  shareAccounting: "No shares; one scalar liability and one lifetime numerator remainder.",
-  solvencyEquation: "hook quote claim balance == totalQuoteFeesAccrued == owner liability.",
-  lossAllocation: "None; a claim burns exactly the backed claim amount.",
-  donationPolicy: "Unsolicited assets create no liability and there is no sweep path.",
-  exitPath: "The immutable owner may claim at any time to a destination chosen for that claim.",
-  dependencyFailure: "A failed PoolManager operation reverts without changing liability.",
+  custody:
+    "SoftLandingLaunch permanently owns the exact direct v4 position and exposes no removal or transfer path; the hook separately holds quote ERC-6909 claims backing only the Programmable liability.",
+  ownership:
+    "The locked position is identified by (PoolId, launcher, tickLower, tickUpper, positionSalt); every hook claim unit belongs only to the immutable Programmable owner liability.",
+  shareAccounting: "No shares exist; the position liquidity is immutable after launch and fee claims use a separate scalar liability and lifetime numerator remainder.",
+  solvencyEquation:
+    "PoolManager position liquidity equals the launch event amount and can never decrease through launcher code; hook quote claim balance == totalQuoteFeesAccrued == owner liability.",
+  lossAllocation:
+    "Locked liquidity has no withdrawal claimant and remains exposed to ordinary AMM price movement; a Programmable fee claim burns exactly its independently backed claim amount.",
+  donationPolicy:
+    "Donations do not alter position ownership or create liabilities; unsolicited launcher assets create no entitlement and no sweep path exists.",
+  exitPath:
+    "The initial position is deliberately permanent and has no exit; later independent LP positions retain ordinary exits; the immutable Programmable owner may claim only its fee liability.",
+  dependencyFailure: "Any PoolManager failure during launch reverts the complete launch; later failures leave the immutable position and existing fee liabilities unchanged.",
 };
 
 const integration = submission.integration;
@@ -681,6 +639,8 @@ integration.deadline = "Enforced by the external router; the hook adds no deadli
 integration.permit2 = "Handled by the external router; the hook stores no trader allowance.";
 integration.stateReads = "Controller and liability state come from hook storage; PoolManager supplies the executed BalanceDelta.";
 integration.events = [
+  "SoftLandingLaunched",
+  "SoftLandingPositionLocked",
   "SoftLandingHookDeployed",
   "CanonicalPoolRegistered",
   "ControllerStarted",
@@ -691,9 +651,9 @@ integration.events = [
   claimEvent,
 ];
 integration.routingAndDiscoverability = {
-  routingMode: "not-planned",
+  routingMode: "uniswap-interface-api",
   allowlistTriggers: { usesDeltaFlag: true, addressStartsWith91: false, targetsMajorPair: false, permissionedPool: false },
-  uniswapRoutingStatus: "not-applicable",
+  uniswapRoutingStatus: "required-not-submitted",
   hookRegistryStatus: "not-submitted",
   customHookDataRequired: false,
   standardRouterCompatible: true,
@@ -710,7 +670,8 @@ integration.routingAndDiscoverability = {
 };
 integration.dataReconstruction = {
   mode: "events-with-confirmed-reads",
-  eventCoverage: "Factory, registration, controller, flow, accrual, and claim events reconstruct the complete public lifecycle.",
+  eventCoverage:
+    "Token Transfer, factory, atomic launch, locked-position, registration, controller, flow, accrual, and claim events reconstruct the complete public lifecycle.",
   cursor: "block-number-transaction-index-log-index",
   startBlockPolicy: "Index from SoftLandingHookDeployed for the canonical hook.",
   finalityDepth: 12,
@@ -731,8 +692,13 @@ integration.dataReconstruction = {
     donationAndDustPolicy: "Unsolicited balances are not liability and cannot be swept; the numerator remainder is accounting state, not a token unit.",
     reconciliation: "Withhold results on any event/getter/claim-balance mismatch.",
   },
-  sourcePaths: ["src/SoftLandingHook.sol", "src/SoftLandingHookFactory.sol"],
-  testPaths: ["test/integration/SoftLandingHook.t.sol"],
+  sourcePaths: [
+    "src/SoftLandingHook.sol",
+    "src/SoftLandingHookFactory.sol",
+    "src/SoftLandingLaunch.sol",
+    "src/SoftLandingToken.sol",
+  ],
+  testPaths: ["test/integration/SoftLandingHook.t.sol", "test/integration/SoftLandingLaunch.t.sol"],
 };
 integration.platformHandoff = {
   intended: true,
@@ -746,7 +712,7 @@ integration.platformHandoff = {
   selfApproval: false,
   availabilityClaimed: false,
   handoffNotes:
-    "The custom hook, controller math, atomic factory, fee accounting, tests, and specifications are implemented. UI, API, production indexer, deployment, routing, monitoring, and availability remain separate maintainer-owned work.",
+    "The fixed token, custom hook, atomic launcher, active permanently locked liquidity, controller math, fee accounting, tests, and executable specification are implemented. Production Universal Router/V4Planner/Permit2 fork parity, UI, API, indexer, deployment, monitoring, independent review, and availability remain explicit maintainer or independent-review gates.",
 };
 
 submission.operations.monitoring =
@@ -787,11 +753,22 @@ submission.authorities = [
     role: "Immutable launch configuration",
     controller: "none; constructor and atomic registration only",
     capabilities: [
-      "No party can mutate fees, duration, PoolManager, quote, currencies, tick spacing, initial price, or canonical PoolId.",
+      "No party can mutate launch identities, token supply or metadata, controller parameters, full PoolKey, or position.",
     ],
     mutable: false,
     delay: null,
     userExitImpact: "No authority can pause or selectively block a trader or LP exit.",
+  },
+  {
+    role: "Permanent launch position custody",
+    controller: "SoftLandingLaunch contract code only",
+    capabilities: [
+      "Own the exact direct PoolManager position without any decrease, transfer, approval, rescue, sweep, or redirect path.",
+    ],
+    mutable: false,
+    delay: null,
+    userExitImpact:
+      "The initial position is intentionally permanent; independent later LP positions remain outside the launcher and retain ordinary PoolManager exit semantics.",
   },
 ];
 submission.dependencies = {
@@ -817,6 +794,19 @@ submission.dependencies = {
   offchain: [],
 };
 submission.valueFlows = [
+  {
+    id: "atomic-launch-liquidity",
+    action: "create token, initialize canonical pool, add the permanent position, and execute the paid initial buy",
+    asset: "native ETH quote and newly created fixed-supply token",
+    from: "launch wallet and one-time token mint",
+    to: "Permanent PoolManager position and paid initial-buy recipient; deterministic token dust stays unreachable",
+    amountRule:
+      "Exact liquidity, one-sided ticks, position salt, token bounds, total supply, initial-buy native input/minimum output/price limit/recipient, expected token/hook/PoolId, and deadline are bound by one request.",
+    settlement:
+      "One PoolManager unlock combines the negative token position delta with the initial buy deltas; SoftLandingLaunch settles exact native input and net token debt before unlock finishes at zero deltas.",
+    failure:
+      "Any deployment, identity, callback, amount, swap, settlement, transfer, or balance postcondition failure reverts the token, hook, pool, position, and initial buy.",
+  },
   {
     id: "core-swap",
     action: "execute the canonical AMM swap",
@@ -871,16 +861,25 @@ const capabilityIds = [
   "quote-side-volume-accounting",
   "security-properties",
   "directional-block-congestion-controller",
+  "fixed-supply-token-launch",
   "irreversible-launch-expiry",
+  "permanently-locked-active-liquidity",
 ];
-surface.id = "soft-landing-hook";
-surface.name = "Soft Landing hook";
-surface.summary = "The one canonical-pool hook containing the controller and mandatory quote-volume fee accounting.";
+surface.id = "soft-landing-contract-system";
+surface.name = "Soft Landing contract system";
+surface.summary =
+  "The fixed token, atomic launcher, hook factory, one canonical-pool hook, permanent active position, controller, and mandatory quote-volume fee accounting.";
 surface.capabilityIds = capabilityIds;
-surface.authorityRefs = ["Programmable fee owner", "Immutable launch configuration"];
-surface.valueFlowRefs = ["core-swap", "programmable-volume-fee", "programmable-fee-claim", "dynamic-lp-fee"];
+surface.authorityRefs = ["Programmable fee owner", "Immutable launch configuration", "Permanent launch position custody"];
+surface.valueFlowRefs = [
+  "atomic-launch-liquidity",
+  "core-swap",
+  "programmable-volume-fee",
+  "programmable-fee-claim",
+  "dynamic-lp-fee",
+];
 surface.assetRefs = ["eth", "launched-token"];
-surface.sourcePaths = SOURCE_PATHS.slice(0, 3);
+surface.sourcePaths = SOURCE_PATHS.filter((sourcePath) => sourcePath.endsWith(".sol"));
 surface.testPaths = TEST_PATHS;
 surface.schemaPaths = ["spec/soft-landing.json"];
 surface.evidencePaths = EVIDENCE_PATHS;
@@ -895,14 +894,20 @@ surface.exposure = {
 };
 surface.profiles.authority = {
   status: "applicable",
-  summary: "PoolManager callback authentication, exact pool admission, immutable configuration, and one fixed claim owner cover every authority.",
-  controls: ["Reject non-PoolManager callbacks and noncanonical PoolKeys; expose no admin mutation, rescue, pause, or upgrade."],
+  summary:
+    "PoolManager callback authentication, exact launch identities, exact pool admission, immutable configuration, permanent position custody, and one fixed claim owner cover every authority.",
+  controls: [
+    "Reject non-PoolManager callbacks and noncanonical PoolKeys; bind the active unlock hash; expose no position removal, arbitrary call, admin mutation, rescue, pause, or upgrade.",
+  ],
   evidenceRefs: ["SECURITY.md"],
 };
 surface.profiles.valueFlow = {
   status: "applicable",
-  summary: "The hook applies an LP-fee override and accrues one quote liability backed by equal PoolManager claims.",
-  controls: ["Reconcile claim balance, totalQuoteFeesAccrued, and owner liability after every swap and claim."],
+  summary:
+    "The launcher atomically settles bounded native and token liquidity, while the hook applies an LP-fee override and accrues one quote liability backed by equal PoolManager claims.",
+  controls: [
+    "Require zero PoolManager deltas and zero launcher residual token/native launch balance; reconcile claim balance, totalQuoteFeesAccrued, and owner liability after every swap and claim.",
+  ],
   evidenceRefs: ["MECHANISM.md", "EVIDENCE.md"],
 };
 surface.profiles.sourceOfTruth = {
@@ -913,21 +918,28 @@ surface.profiles.sourceOfTruth = {
 };
 surface.profiles.externalCalls = {
   status: "applicable",
-  summary: "The hook calls only its immutable PoolManager for initialization, claim mint/burn, unlock, and take.",
-  controls: ["Use atomic failure and exact return checks; no arbitrary target or calldata exists."],
+  summary:
+    "The launcher and hook call only the immutable PoolManager and exact hook factory for initialization, liquidity, swaps, claim mint/burn, unlock, settlement, and take.",
+  controls: ["Authenticate callbacks, bind active unlock bytes, use atomic failure and exact return checks; no arbitrary target or calldata exists."],
   evidenceRefs: ["SECURITY.md"],
 };
 surface.profiles.custody = {
   status: "applicable",
-  summary: "The hook holds only quote ERC-6909 claims that back the immutable owner liability.",
-  controls: ["Maintain claim balance == total liability; no sweep, rescue, project claim, or operator."],
+  summary:
+    "The launcher permanently owns one direct active position and the hook separately holds only quote ERC-6909 claims that back the immutable owner liability.",
+  controls: [
+    "Expose no decrease/transfer/approval/sweep/rescue path for the launch position; maintain claim balance == total liability with no project claim or operator.",
+  ],
   evidenceRefs: ["SECURITY.md", "EVIDENCE.md"],
 };
 surface.profiles.sourceTestSchema.evidenceRefs = ["EVIDENCE.md"];
 surface.profiles.failureRecovery = {
   status: "applicable",
-  summary: "Every invalid transition, fill, settlement, or claim fails atomically; a new code path requires a new hook.",
-  controls: ["Test rollback, expiry, partial fills, long gaps, claims, and callback authentication."],
+  summary:
+    "Every invalid CREATE2 identity, position, initial buy, transition, fill, settlement, or claim fails atomically; a new code path requires a new reviewed deployment.",
+  controls: [
+    "Test full-launch rollback, failed initial-buy settlement, negative callbacks, active locked liquidity, direct buys and sells, expiry, partial fills, long gaps, claims, and callback authentication.",
+  ],
   evidenceRefs: ["SECURITY.md", "EVIDENCE.md"],
 };
 
@@ -958,8 +970,8 @@ const triggers = {
 submission.projectCapabilities = capabilityIds.map((id) => ({
   id,
   kind: id,
-  summary: `Soft Landing capability ${id} is implemented in the single canonical hook boundary and bound to the declared source, tests, value flows, and failure rules.`,
-  surfaceIds: ["soft-landing-hook"],
+  summary: `Soft Landing capability ${id} is implemented in the atomic contract-system boundary and bound to the declared source, tests, value flows, and failure rules.`,
+  surfaceIds: ["soft-landing-contract-system"],
   securityTriggers: triggers,
   requiredProfiles: Object.entries(triggers)
     .filter(([, enabled]) => enabled)
@@ -988,15 +1000,43 @@ submission.capabilityExtensions = [
     testPaths: ["test/integration/SoftLandingHook.t.sol"],
     evidencePaths: ["MECHANISM.md", "SECURITY.md"],
   },
+  {
+    capabilityId: "fixed-supply-token-launch",
+    summary:
+      "A launch-wallet-bound CREATE2 token deploys once with immutable creator, name, symbol, metadata, 18 decimals, and fixed supply; its supply is committed to permanent liquidity except deterministic unreachable dust.",
+    interactionRefs: ["launcher.launch", "token.constructor"],
+    trustBoundary:
+      "The launch request binds exact token initcode inputs, salt, expected token, recipient, and deadline; the token exposes no mint, burn, pause, freeze, blacklist, confiscation, tax, rescue, or upgrade authority.",
+    failureMode:
+      "Any identity, supply, metadata, hook, pool, liquidity, initial-buy, or balance mismatch reverts token creation and the entire launch.",
+    schemaPath: "spec/soft-landing.json",
+    sourcePaths: ["src/SoftLandingLaunch.sol", "src/SoftLandingToken.sol"],
+    testPaths: ["test/integration/SoftLandingLaunch.t.sol"],
+    evidencePaths: ["EVIDENCE.md", "SECURITY.md"],
+  },
+  {
+    capabilityId: "permanently-locked-active-liquidity",
+    summary:
+      "The atomic launcher creates one active direct PoolManager position under exact ticks, liquidity, salt, PoolId, and bounded amounts and retains it without any decrease or transfer path.",
+    interactionRefs: ["launcher.launch", "launcher.unlockCallback", "PoolManager.modifyLiquidity"],
+    trustBoundary:
+      "Only the immutable PoolManager may enter the exact active unlock-data callback; the launcher is the position owner and has no admin, arbitrary call, approval, rescue, sweep, removal, or upgrade path.",
+    failureMode:
+      "Wrong one-sided ticks, wrong deltas, amount-bound failure, nonzero manager deltas, failed initial buy, or unexpected launcher balances revert the complete launch atomically.",
+    schemaPath: "spec/soft-landing.json",
+    sourcePaths: ["src/SoftLandingLaunch.sol"],
+    testPaths: ["test/integration/SoftLandingLaunch.t.sol"],
+    evidencePaths: ["EVIDENCE.md", "SECURITY.md"],
+  },
 ];
 
 submission.risk = {
   dimensions: {
     complexity: 3,
     customMath: 2,
-    externalDependencies: 1,
-    externalLiquidity: 1,
-    valueAtRisk: 2,
+    externalDependencies: 2,
+    externalLiquidity: 3,
+    valueAtRisk: 3,
     teamMaturity: 1,
     upgradeability: 0,
     autonomy: 0,
@@ -1005,16 +1045,19 @@ submission.risk = {
   rationales: {
     complexity: "Quadrant-dependent deltas, cumulative remainder accounting, claims, and a two-direction block state machine interact in one hook.",
     customMath: "Full-precision piecewise utilization math and exact-output gross-up are bounded and differentially fuzzed.",
-    externalDependencies: "Only immutable PoolManager and standard token behavior; no oracle, keeper, bridge, vault, or upgrade.",
-    externalLiquidity: "The hook holds quote ERC-6909 claims backing one fee liability but no LP or external protocol position.",
-    valueAtRisk: "The hook custodies accrued 10 bps claims until the immutable owner claims them.",
+    externalDependencies:
+      "The atomic launcher and hook depend on the exact immutable PoolManager, while production trading additionally requires separately verified Universal Router, V4Planner, Quoter, StateView, and Permit2 parity; no oracle, keeper, bridge, vault, or upgrade exists.",
+    externalLiquidity:
+      "The launcher permanently owns the initial active PoolManager position, while the hook holds quote ERC-6909 claims backing one separate fee liability.",
+    valueAtRisk:
+      "The complete configured launch-liquidity amounts are permanently locked and the hook separately custodies accrued 10 bps claims until the immutable owner claims them.",
     teamMaturity: "Conservative nonzero process score until independent review and fork evidence complete.",
     upgradeability:
       "Hook, controller, owner, quote, full PoolKey, initial sqrt price, PoolId, parameters, and factory registration are immutable.",
     autonomy: "State changes only during user-initiated swaps; no independent agent, keeper, or mutable control acts.",
     priceImpact: "The bounded LP fee changes swap cost but core concentrated-liquidity price formation remains unchanged.",
   },
-  declaredTotal: 12,
+  declaredTotal: 16,
   declaredTier: "high",
   featureTriggers: [
     "custom-accounting",
@@ -1048,13 +1091,16 @@ submission.implementation = {
   runtimeAssetManifestPath: null,
 };
 submission.disclosures = [
-  "Prototype only: repository tests passed locally, but the hook is not audited, accepted, deployed, source-verified, runtime-matched, routed, monitored, or live.",
+  "Prototype only: repository tests passed locally, but the contract system is not independently reviewed, accepted, deployed, source-verified, runtime-matched, production-router tested, routed, monitored, or live.",
+  "The atomic launch creates a fixed-supply metadata-bound token, exact 0x20cc hook and canonical native-ETH pool, then permanently locks one active direct PoolManager position under the launcher with no removal, transfer, rescue, sweep, or LP-fee claim path.",
+  "The new token funds a one-sided full-supply position and the launch wallet pays exactly 0.001 ETH for an atomic initial buy; only purchased output reaches the wallet and 25,789 wei-token rounding dust remains unreachable, or the complete launch reverts.",
   "Soft Landing prices sustained directional launch congestion one block later; it does not stop reordering, private bundles, wash flow, or a packed first-block snipe.",
   "Paid executed flow can raise a following block's directional LP fee; the hook cannot distinguish manipulative and organic throughput without identity or an external dependency.",
   "A higher sell fee during panic can increase exit cost; immutable base, decay, duration, targets, and a 300 bps product cap must be publicly reviewed before deployment.",
   "The hook-owned charge is exactly 10 bps to the immutable Programmable owner and zero to the project; LP fees are separate and belong to LPs.",
   "Specified-quote partial fills and positive gross quote below 1,000 smallest units revert under the declared accounting policy.",
   "The canonical application uses native ETH as currency0 quote and a standard fixed-supply launched token as currency1; the implementation tests both quote orderings.",
+  "Protocol-level direct trading is locally exercised after atomic launch; production Universal Router, V4Planner, Permit2, V4Quoter, StateView, fork lifecycle, provider routing, and callback/settlement parity remain explicit platform integration gates.",
   "No wallet identity, tx.origin, holding time, allowlist, denylist, oracle, keeper, pause, upgrade, rescue, creator claim, project fee, or mutable fee setter exists.",
 ];
 submission.noHookArchitecture = null;

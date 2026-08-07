@@ -1,19 +1,19 @@
 {
   "reportVersion": 3,
   "standardVersion": "1.5.0",
-  "submissionHash": "sha256:545d82f919b4d0361f000438dbae5d6cab7d68ed54f4087436a7bb3c96635685",
+  "submissionHash": "sha256:0b94d3982b7ed9d118e949c51d57133c01e6e474d833e8f9e29a5bb442775850",
   "toolchain": {
     "validatorSha256": "sha256:2b9befc32be4b3a8267c9c9c4fe8cb36dcc53aef518f7c8216c0edda06732d61",
     "schemaSha256": "sha256:67e839128136fbffa8d9d6551a75c1988e55a3a74a0827359826e1449201cc45",
     "deploymentSnapshotSha256": "sha256:35e36a2837a70688104cd6a4aae3da4e1401429226c8ca15d036db4cf2195d2c",
     "officialDeploymentReferenceSha256": "sha256:ef7e12bf1312edf374749bfeb18ac41cb83623856fbfd39892606579b7119fd6",
-    "policyBundleSha256": "sha256:1e6fb7abf912551a81ad045a1147da3f978c66b9c4ab1ee074e7ed09d07add61"
+    "policyBundleSha256": "sha256:30db39a2059cbb3755eb9f04eb0ea8e2e0256e0243045f1e37a955dbb173443f"
   },
   "decision": "PROTOTYPE_READY",
   "decisionCompatibility": "LEGACY_COMPATIBILITY_ONLY",
   "hookPermissionMask": "0x20cc",
   "risk": {
-    "score": 12,
+    "score": 16,
     "baseTier": "medium",
     "effectiveTier": "high",
     "featureTriggers": [
@@ -53,6 +53,20 @@
     },
     {
       "severity": "warning",
+      "code": "CAPABILITY_EXTENSION_REQUIRES_ARCHITECTURE_REVIEW",
+      "path": "$.capabilityExtensions[2]",
+      "message": "Novel capability fixed-supply-token-launch is preserved for architecture review rather than forced into the current catalog.",
+      "remediation": "Review its declared interactions, trust boundary, failure mode, schema and exact source/evidence bytes before defining adapters or approval requirements."
+    },
+    {
+      "severity": "warning",
+      "code": "CAPABILITY_EXTENSION_REQUIRES_ARCHITECTURE_REVIEW",
+      "path": "$.capabilityExtensions[3]",
+      "message": "Novel capability permanently-locked-active-liquidity is preserved for architecture review rather than forced into the current catalog.",
+      "remediation": "Review its declared interactions, trust boundary, failure mode, schema and exact source/evidence bytes before defining adapters or approval requirements."
+    },
+    {
+      "severity": "warning",
       "code": "PROJECT_CAPABILITY_KIND_REQUIRES_ARCHITECTURE_REVIEW",
       "path": "$.projectCapabilities[0].kind",
       "message": "Capability kind canonical-v4-pool remains valid but is outside the acceleration catalog.",
@@ -62,7 +76,21 @@
       "severity": "warning",
       "code": "PROJECT_CAPABILITY_KIND_REQUIRES_ARCHITECTURE_REVIEW",
       "path": "$.projectCapabilities[10].kind",
+      "message": "Capability kind fixed-supply-token-launch remains valid but is outside the acceleration catalog.",
+      "remediation": "Keep the open kind, complete every security trigger and profile, and review the exact architecture rather than forcing it into an unrelated category."
+    },
+    {
+      "severity": "warning",
+      "code": "PROJECT_CAPABILITY_KIND_REQUIRES_ARCHITECTURE_REVIEW",
+      "path": "$.projectCapabilities[11].kind",
       "message": "Capability kind irreversible-launch-expiry remains valid but is outside the acceleration catalog.",
+      "remediation": "Keep the open kind, complete every security trigger and profile, and review the exact architecture rather than forcing it into an unrelated category."
+    },
+    {
+      "severity": "warning",
+      "code": "PROJECT_CAPABILITY_KIND_REQUIRES_ARCHITECTURE_REVIEW",
+      "path": "$.projectCapabilities[12].kind",
+      "message": "Capability kind permanently-locked-active-liquidity remains valid but is outside the acceleration catalog.",
       "remediation": "Keep the open kind, complete every security trigger and profile, and review the exact architecture rather than forcing it into an unrelated category."
     },
     {
@@ -193,6 +221,11 @@
       "reason": "Every candidate must prove compatibility with exact deployments and current chain state."
     },
     {
+      "id": "privileged-authority-review",
+      "stage": "candidate",
+      "reason": "A privileged capability can affect users, balances or behavior."
+    },
+    {
       "id": "programmable-indexer-integration-review",
       "stage": "candidate",
       "reason": "Only Programmable maintainers can accept the proposed indexer integration."
@@ -226,6 +259,11 @@
       "id": "independent-routing-provider-approval",
       "stage": "external",
       "reason": "Routing or listing is controlled by each external provider."
+    },
+    {
+      "id": "uniswap-hook-routing-review",
+      "stage": "external",
+      "reason": "Published Uniswap routing-review criteria apply; only the provider can approve the hook or pool."
     },
     {
       "id": "after-swap-return-delta-invariants",

@@ -449,6 +449,8 @@ contract SoftLandingHookTest is Deployers {
 
     function _leadingSelector(bytes memory data) private pure returns (bytes4 selector) {
         require(data.length >= 4, "missing selector");
+        // The explicit length check proves that truncating to the leading four-byte selector is intentional and safe.
+        // forge-lint: disable-next-line(unsafe-typecast)
         selector = bytes4(data);
     }
 }

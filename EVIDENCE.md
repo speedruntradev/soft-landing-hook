@@ -38,6 +38,10 @@ node simulations/launch-traces.mjs
 - Executed gross quote accounting, specified-quote partial-fill rollback, and quote-unspecified executed deltas
 - Minimum quote quantum, exact-output gross-up, cumulative rounding, claim persistence, and fragmentation resistance
 - Immutable owner-only claim with per-claim destination and callback/cross-pool authentication
+- Atomic fixed-supply token and exact-mask hook CREATE2 deployment, canonical pool initialization, one-sided full-supply
+  position, exact paid initial buy, permanent launcher custody, and directly executable post-launch buy and sell
+- Full launch rollback on impossible position bounds or initial-buy settlement bounds; direct and substituted launcher
+  unlock callbacks rejected
 - Deterministic adversarial traces for calm, burst, sustained, alternating, panic, grief, LP wash, inactivity, and expiry
 
 ## Known incomplete evidence
@@ -47,10 +51,12 @@ node simulations/launch-traces.mjs
   short version, and fills the canonical `0.8.26+commit.8a97fa7a` envelope field without changing compiler input or
   output.
 
-- Forge lint: run locally; truncating casts use checked `SafeCast`; remaining diagnostics are non-security style notes
-- Slither: unavailable in the local toolchain; pending isolated CI or reviewer run
-- Mainnet fork: pending
-- Router parity beyond the core test router: pending
+- Forge lint: run locally; every reported cast is either checked by `SafeCast` or carries a local bounded-input/length
+  disposition. No Forge lint diagnostics remain.
+- Slither: unavailable in the local toolchain; independent reviewer-owned and not passed
+- Pinned Ethereum fork lifecycle: platform integration-owned and not run
+- Production Universal Router/V4Planner/Permit2/Quoter/StateView parity: platform integration-owned and not run; the
+  local direct PoolManager buy and sell do not establish production route parity
 - Echidna/Manticore: not run
-- Independent review/audit: not performed
+- Independent review/audit: platform-owned required gate; not performed and not passed
 - Deployment/runtime/source verification: not applicable; not deployed

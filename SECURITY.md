@@ -5,6 +5,8 @@ Status: prototype; not independently audited or deployed.
 ## Trust and authority
 
 - The immutable PoolManager is the only callback and unlock-callback caller.
+- The launcher accepts an unlock callback only from its immutable PoolManager while the keccak256 hash of the exact
+  callback bytes matches the active launch. Direct, stale, substituted, and wrong-manager callbacks revert.
 - The factory commits the PoolManager, quote asset, controller parameters, both currencies, dynamic fee flag, tick
   spacing, and initial sqrt price to the hook's CREATE2 initcode, then deploys and initializes that exact PoolKey
   atomically.
@@ -13,6 +15,8 @@ Status: prototype; not independently audited or deployed.
 - The only privileged function is the immutable Programmable owner's claim of its own accrued 10 bps liability, to a
   nonzero destination it selects for that claim.
 - The hook exposes no function that initiates a same-pool swap.
+- The launcher permanently owns the initial direct PoolManager position and exposes no removal, transfer, approval,
+  arbitrary-call, rescue, sweep, upgrade, or LP-fee-claim path.
 
 ## Value conservation
 
@@ -23,6 +27,9 @@ Status: prototype; not independently audited or deployed.
 - `totalQuoteFeesAccrued` must equal the owner liability after every accrual and claim.
 - Redemption burns the exact claims before `take` transfers underlying quote currency.
 - Lifetime cumulative rounding remainder survives claims and prevents accepted split swaps from suppressing the fee.
+- Atomic launch conservation is `PoolManager token balance + initial buyer token balance + launcher rounding dust =
+  fixed total supply`. Native input equals the exact initial-buy amount and the launcher's pre-existing forced native
+  balance must be unchanged after launch.
 
 ## Callback and lifecycle properties
 
@@ -36,6 +43,8 @@ Status: prototype; not independently audited or deployed.
 - A block transition runs at most once; same-block swaps only add directional flow.
 - Skipped blocks apply bounded decay in constant time.
 - After expiry both fees equal base forever and flow state is no longer written.
+- The one-sided position must end exactly at the initialized tick. Liquidity and initial buy execute in one unlock;
+  only the net token debt and exact native input settle, and PoolManager rejects any nonzero remaining delta.
 
 ## Economic threats and accepted limits
 
@@ -65,3 +74,6 @@ blacklistable, callback-capable, or unusually coarse quote tokens require separa
 - Deterministic deployment address, constructor inputs, runtime hash, and source verification
 - Maintainer review of all return-delta accounting
 - Production monitoring and incident process
+
+Pinned-fork lifecycle and production Universal Router/V4Planner/Permit2 parity are platform-owned integration gates.
+The independent security review is also platform-owned and is explicitly not passed by contributor tests.

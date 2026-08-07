@@ -43,6 +43,27 @@ The caller supplies the address mined for the exact launch configuration. The fa
 factory obtains the PoolKey from hook immutables and calls a no-argument registration function; callers cannot swap in
 a different PoolKey or initial price between address mining and initialization.
 
+## Atomic token, liquidity, and initial buy
+
+`SoftLandingLaunch.launch` binds the token salt and expected CREATE2 address, hook salt and expected address, expected
+PoolId, complete controller, tick spacing, initial sqrt price, one-sided position, exact native initial-buy input,
+minimum bought-token output, price limit, recipient, and deadline. The current executable launch profile uses native
+ETH as currency0, the new token as currency1, dynamic fee `0x800000`, tick spacing 60, initial tick 204180, lower tick
+-887220, and hook permission mask `0x20cc`.
+
+The token constructor mints exactly 1,000,000,000 tokens to the launcher and exposes no further mint or administrative
+path. Inside one PoolManager unlock, the launcher adds liquidity `36856093846670599562186` to the range
+`[-887220, 204180]`, requiring a token principal of `999999999999999999999974211` smallest units. At the start price
+the position is token-only. The launcher then swaps the caller's exact 0.001 ETH input into the new token, settles the
+combined liquidity and swap deltas, and transfers only the bought output to the declared recipient. Under the bound
+configuration the local real-PoolManager test receives `727555259216957636340100` token units and leaves exactly
+25,789 token units as inaccessible rounding dust.
+
+The direct position owner is the immutable launcher contract. It has no decrease-liquidity, position-transfer,
+approval, arbitrary-call, rescue, sweep, or upgrade entry point, so the initial principal and its LP fees have no exit.
+Any token deployment, hook deployment, pool initialization, position bound, swap bound, settlement, transfer, or
+postcondition failure reverts the launch transaction and all child deployments.
+
 ## Economic direction
 
 Direction is defined by the quote asset, not by token ordering:

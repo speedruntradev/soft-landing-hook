@@ -14,6 +14,12 @@ The hook separately enforces Programmable's mandatory 10 bps claimable volume fe
 `programmable-volume-fee-v1@1.1.0`. That charge is denominated in the canonical quote asset and belongs only to the
 immutable Programmable owner. LP fees remain separate and belong to LPs.
 
+`SoftLandingLaunch` turns that hook into a complete atomic launch. It CREATE2-deploys a fixed-supply metadata-bound
+token, deploys the exact permission-mask `0x20cc` hook, initializes the native-ETH pool at the committed price, locks
+almost the full token supply in a one-sided direct PoolManager position, and executes a paid initial buy in one
+PoolManager unlock. The launcher owns the position permanently and has no removal, transfer, rescue, sweep, arbitrary
+call, or upgrade path. The launch wallet receives only the tokens purchased by its exact native input.
+
 ## Quick start
 
 Requirements: Foundry, Node.js 20+, and npm.
@@ -51,6 +57,11 @@ and `bun run build` before publishing it.
 - A trader can pay real execution costs to raise a following block's directional fee.
 - Unsupported specified-quote partial fills revert atomically.
 - Positive gross quote flow below 1,000 smallest quote units reverts under the current Programmable fee policy.
+- The initial position and its LP fees are deliberately permanent. Only 25,789 wei-token of deterministic rounding
+  dust remains in the launcher under the specified 1-billion-token launch configuration, also without a withdrawal
+  path.
+- Production Universal Router, V4Planner, Permit2, Quoter, StateView, pinned-fork, deployment, and routing evidence are
+  separate platform-owned gates and are not claimed by the local direct-PoolManager tests.
 - This repository is a prototype. It is not audited, approved, deployed, routed, or live.
 
 ## License
